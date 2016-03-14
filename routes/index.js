@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 
 
 /* Redirect the users agent to the Diglias GO athentication server */
-var callbackBaseUrl = "http://localhost:3000/";
+var callbackBaseUrl = "https://localhost:3000/";
 var startAuthURL = 'https://prodtest-login.diglias.com/main-eapi/begin';
 
 router.get('/authenticate', function(req, res, next) {

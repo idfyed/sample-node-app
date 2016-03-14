@@ -22,7 +22,7 @@ var returnLink = "authenticate/success";
 var cancelLink = "authenticate/cancel";
 var rejectLink = "authenticate/reject";
 var requestId = "xxxxxxxxxxxxxxxx";
-var macKey = "LW4eUhQkJfwJGgQU8JCT/g==1";
+var macKey = "LW4eUhQkJfwJGgQU8JCT/g==";
 
 /**
  * Computes a mac according to the API specification.
