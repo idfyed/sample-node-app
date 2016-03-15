@@ -35,9 +35,9 @@ The port number and some other runtime attributes can be managed trough environm
 ## Application structure
 The application in it self if a fairly straight forward web application based on the [Express](http://expressjs.com) web application framework. The [Jade](http://jade-lang.com) templating system to render html.
 From a Diglias integration point of view there are really three source files that is of interest:
-- `routes/index.js` - This is where the application specific logics are implemented as a set of URL handlers that communiate with the Diglias server trough the users browser.
-- `diglias.js`- A helper module that manages some of the API specific tasks.
-- `diglias-conf.json`- configuration data related to Diglais.
+* `routes/index.js` - This is where the application specific logics are implemented as a set of URL handlers that communiate with the Diglias server trough the users browser.
+* `diglias.js`- A helper module that manages some of the API specific tasks.
+* `diglias-conf.json`- configuration data related to Diglais.
 
 ## Contact and feedback
 Any questions, or feedback on the code or Diglias in general?
