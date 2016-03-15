@@ -32,6 +32,13 @@ The port number and some other runtime attributes can be managed trough environm
 3. Use your Diglias Me id to authenticate yourself to the Diglias system.
 4. If the authentication is successful you will be directed back to the application where all the supplied user properties will be rendered on a page.
 
+## Application structure
+The application in it self if a fairly straight forward web application based on the [Express](http://expressjs.com) web application framework. The [Jade](http://jade-lang.com) templating system to render html.
+From a Diglias integration point of view there are really three source files that is of interest:
+- `routes/index.js` - This is where the application specific logics are implemented as a set of URL handlers that communiate with the Diglias server trough the users browser.
+- `diglias.js`- A helper module that manages some of the API specific tasks.
+- `diglias-conf.json`- configuration data related to Diglais.
+
 ## Contact and feedback
 Any questions, or feedback on the code or Diglias in general?
 
