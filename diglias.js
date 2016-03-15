@@ -10,25 +10,16 @@
  *
  */
 
-// Used to comåute the mac as a MD5 HMAC
+// Used to compute the mac as a HMAC-MD5
 var Hashes = require('jshashes');
 
 var diglias = {};
-
-// Constants, please adopt according to the specific 
-// confih´guration.
-var companyName = "playground";
-var returnLink = "authenticate/success";
-var cancelLink = "authenticate/cancel";
-var rejectLink = "authenticate/reject";
-var requestId = "xxxxxxxxxxxxxxxx";
-var macKey = "LW4eUhQkJfwJGgQU8JCT/g==";
 
 /**
  * Computes a mac according to the API specification.
  */
 
-function computeMac( values ) {
+function computeMac( values, macKey ) {
     // Sort the values in alphabetical order bye name
     var keys = Object.keys(values).sort();
 
@@ -61,34 +52,66 @@ function computeMac( values ) {
 }
 
 /**
- * Prepars a query string to be sent to the Diglias server
+ * Builds a URL including parametrers that the uset agent should be redirected
+ * to to initiate a authentication transaction.
+ *
+ * Parameters:
+ *  endpoint: What Diglias envirioment to call, can be one of:
+ *      "prod" - for the live production system.
+ *      "test" -  for testing purposes during integration
+ *      "prodTest" - for evaliation purposes in conjucton with the prod test diglias app
  */
-diglias.authnRequestParams = function(callbackBaseUrl) {
-    var paramsMap = {};
+diglias.buildAuthnRequestUrl = function(endpoint, parameters ) {
 
-    // Add mandatory parameters to a map
-    paramsMap.auth_companyname = companyName;
-    paramsMap.auth_requestid = requestId;
-    paramsMap.auth_returnlink = callbackBaseUrl.concat(returnLink);
-    paramsMap.auth_cancellink = callbackBaseUrl.concat(cancelLink);
-    paramsMap.auth_rejectlink = callbackBaseUrl.concat(rejectLink);
-
-    // Compute the mac and add it to the map
-    paramsMap.mac = computeMac(paramsMap);
+    // Verify that all mandotory parameters are included
+    var mandatoryParams = [
+        "auth_companyname",
+        "auth_requestid",
+        "auth_returnlink",
+        "auth_cancellink",
+        "auth_rejectlink",
+    ];
     
-    // Concatenate all patameters into a string sutiable as a get request query string
-    var keys = Object.keys(paramsMap);
+    mandatoryParams.forEach( function( param ){
+        if (typeof parameters[param] === "undefined") {
+            throw new Error("Mandotory parameter [" + param + "] missing");
+        }
+    });
+    
+    // Compute the mac and add it to the map
+    parameters.mac = computeMac(parameters, parameters.mac_key);
+    
+    // Remove the mac key from the map
+    delete parameters.mac_key;
+    
+    // Concatenate all patameters into a string sutiable as a get
+    // request query string
+    var keys = Object.keys(parameters);
 
-    var params = "";
+    var paramString = "";
 
     keys.forEach(function(key) {
-        if (params.length > 0) {
-            params = params.concat("&");
+        if (paramString.length > 0) {
+            paramString = paramString.concat("&");
         }
-        params = params.concat(key.concat("=").concat(paramsMap[key]));
+        paramString = paramString.concat(key.concat("=").concat(parameters[key]));
     });
 
-    return params;
+    var envEndpoints = {
+        prod : "https://login.diglias.com/main-eapi/begin",
+        prodTest : "https://prodtest-login.diglias.com/main-eapi/begin",
+        test : "https://test.diglias.com/main-eapi/begin"
+    };
+
+    //
+    // Validate that the caller has given a valid endpoint
+ 
+    if ( typeof envEndpoints[endpoint] === "undefined") {
+        throw new Error("Invalid endpoint value: " + endpoint);
+    }
+ 
+    // Return a complete URL
+    return envEndpoints[endpoint].concat('?',paramString);
 };
 
 /**
@@ -96,8 +119,8 @@ diglias.authnRequestParams = function(callbackBaseUrl) {
  * comparing it with the enclosed one.
  */
 
-diglias.veirifyAuthnResponse = function( responseBody ) {
-    var mac = computeMac( responseBody );
+diglias.veirifyAuthnResponse = function( responseBody, macKey ) {
+    var mac = computeMac( responseBody, macKey );
     return mac === responseBody.mac;
 };
 
