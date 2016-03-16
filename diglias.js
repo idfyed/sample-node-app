@@ -60,6 +60,10 @@ function computeMac( values, macKey ) {
  *      "prod" - for the live production system.
  *      "test" -  for testing purposes during integration
  *      "prodTest" - for evaliation purposes in conjucton with the prod test diglias app
+ *  parameters: A object containing all parameter values and the key to be used when
+ *      computing the mac. The parameters should be stored as proprties nameed according
+ *      to the API specification. The mac key shold be stored as a property called mac_key. 
+ *  
  */
 diglias.buildAuthnRequestUrl = function(endpoint, parameters ) {
 
