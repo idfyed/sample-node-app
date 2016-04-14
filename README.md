@@ -32,6 +32,12 @@ The port number and some other runtime attributes can be managed trough environm
 3. Use your Diglias Me id to authenticate yourself to the Diglias system.
 4. If the authentication is successful you will be directed back to the application where all the supplied user properties will be rendered on a page.
 
+## Running in Docker
+If you prefer, you can build a docker image of the application and run it in a docker host. In that case it will not be necessary to install node.js and npm and you will not start the application in you local host.
+### Build the image
+Issue the command `docker build -t diglias-sample-app .` in the root directory of the repository. This will build a image in your docker host named `diglias-sample-app`.
+### Run the Image
+The application can be started in the docker host using the command `docker run -p 3000 --name=diglias diglias-sample-app'. This will start a container named `diglias`and expose the application on port 3000 of the docker host. 
 ## Application structure
 The application in it self if a fairly straight forward web application based on the [Express](http://expressjs.com) web application framework. The [Jade](http://jade-lang.com) templating system to render html.
 From a Diglias integration point of view there are really three source files that is of interest:
