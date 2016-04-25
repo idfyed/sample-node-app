@@ -113,3 +113,31 @@ function onListening() {
         : 'port ' + addr.port;
     debug('Listening on ' + bind);
 }
+
+/**
+ * Handle graceful shutdown
+ */
+
+var shutdown = function () {
+
+    console.log('Shuttting down HTTP server');
+    server.close(function () {
+        console.log('HTTP server closed sucessfully');
+        process.exit(0);
+    });
+    setTimeout(function () {
+        console.log("Could not close connections in time, forcefully shutting down");
+        process.exit()
+    }, 10 * 1000);
+};
+
+process.on('SIGTERM', function () {
+    console.log('Got signal SIGTERM, shutting down');
+    shutdown();
+
+});
+
+process.on('SIGINT', function () {
+    console.log('Got signal SIGINT, shutting down');
+    shutdown();
+});
