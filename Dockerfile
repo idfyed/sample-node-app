@@ -4,13 +4,8 @@
 # @author jonas
 # 
 #
-FROM centos:centos6
+FROM crusaider/baseimage-node:0.1.0
 MAINTAINER Jonas jonas@diglias.com
-
-# Enable Extra Packages for Enterprise Linux (EPEL) for CentOS
-RUN yum install -y epel-release
-# Install Node.js and npm
-RUN yum install -y nodejs npm
 
 # Install app dependencies
 COPY package.json /src/package.json
@@ -28,6 +23,7 @@ COPY diglias-conf.json /src/diglias-conf.json
 # The app runs on port 3000 over SSL
 EXPOSE  3000
 
-# Start the node server
-WORKDIR /src
-CMD ["npm", "start"]
+# Register the app as a service with my_init
+RUN mkdir /etc/service/sample-app && \
+    echo "#!/bin/sh\ncd /src\nexec npm start" > /etc/service/sample-app/run && \
+    chmod +x /etc/service/sample-app/run
