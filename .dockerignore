@@ -3,4 +3,5 @@ node_modules
 Gruntfile.js
 README.md
 Dockerfile
+docker-compose.yml
 .gitignore
