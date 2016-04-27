@@ -5,3 +5,6 @@ README.md
 Dockerfile
 docker-compose.yml
 .gitignore
+./eapi-client/src/
+./eapi-client/test/
+./eapi-client/node/modules/
