@@ -1,3 +1,5 @@
 /node_modules/
+/eapi-client/node_modules/
+/eapi-client/.vscode/
 /.vscode/
 /*.log

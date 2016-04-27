@@ -7,7 +7,7 @@
 
 var express = require('express');
 var fs = require('fs');
-var Diglias = require('../diglias');
+var Diglias = require('diglias-eapi-client');
 
 var router = express.Router();
 
@@ -53,20 +53,24 @@ function loadDigliasConf() {
 router.get('/authenticate', function(req, res, next) {
 
     // Load relying party cofiguration from file
-    var options = loadDigliasConf();
+    var conf = loadDigliasConf();
 
+    params = {};
+    
+    params.auth_companyname = conf.auth_companyname;
+    
     // Add application specific options (URL:s)
-    options.auth_returnlink = buildEndpointUrl(req, "authenticate/success");
-    options.auth_cancellink = buildEndpointUrl(req, "authenticate/cancel");
-    options.auth_rejectlink = buildEndpointUrl(req, "authenticate/reject");
+    params.auth_returnlink = buildEndpointUrl(req, "authenticate/success");
+    params.auth_cancellink = buildEndpointUrl(req, "authenticate/cancel");
+    params.auth_rejectlink = buildEndpointUrl(req, "authenticate/reject");
 
     // Add request id - in this example it is a dummy, in a real world 
     // application it should be a unique identifier of the login reqest
     // that is stable bewteen HTTP requests.
-    options.auth_requestid = "xxxxxxxxxxxxxxxx";
+    params.auth_requestid = "xxxxxxxxxxxxxxxx";
 
     // Build the URL and redirect the users browser to it.
-    res.redirect(Diglias.buildAuthnRequestUrl('prodTest', options));
+    res.redirect(Diglias.buildAuthnRequestUrl('prodTest', conf.mac_key, params));
 });
 
 /**
