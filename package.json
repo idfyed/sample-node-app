@@ -1,5 +1,5 @@
 {
-  "name": "node.js",
+  "name": "diglias-sample-node-app",
   "version": "0.1.0",
   "description": "node.js sample application implementing the client side of the Diglias EAPI authentication protocol",
   "private": true,
