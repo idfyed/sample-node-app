@@ -42,7 +42,7 @@ function buildEndpointUrl(req, endpoint) {
  */
 
 function loadDigliasConf() {
-    return JSON.parse(fs.readFileSync("diglias-conf.json", 'utf8'));
+    return JSON.parse(fs.readFileSync("./src/diglias-conf.json", 'utf8'));
 }
 
 /**
