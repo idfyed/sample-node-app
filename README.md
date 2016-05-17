@@ -9,7 +9,7 @@ Since the application is pure javascript it should be possible to run on any pla
 
 ## Dependencies
 The application is depending on that node.js and npm is installed on the hosting system. Node and NPM can be downloaded here: https://nodejs.org/en/
-If new SSL certificates are to be generated, the bash script `bin/certs/make-certs.sh` needs `opensll` to be installed and available on the path.  
+If new SSL certificates are to be generated, the bash script `src/bin/certs/make-certs.sh` needs `opensll` to be installed and available on the path.  
 
 ## Installation
 Clone the repository in your preferred location. Change to the root directory of the cloned repository and issue the command: `npm install`. 
@@ -17,14 +17,14 @@ This will download and install all the necessary dependencies in a subdirectory 
 
 ## TLS (SSL) Certificates
 The distribution includes self signed certificates for the hostname `localhost`. If the application is to be launched under a different hostname the certificates can be regenerated.
-1. Make `bin/certs` the current directory
+1. Make `src/bin/certs` the current directory
 2. Run the command `bash make-certs.sh [hostname]` where `hostname` is the new hostname to issue certificates for.
 
 ## Usage
 
 ### Starting the server
 In the root of the repository issue the command `npm start`. This will start node.js running a web server on port 3000 by default.
-The port number and some other runtime attributes can be managed trough environment variabels. Look at the code in `bin/www`.
+The port number and some other runtime attributes can be managed trough environment variabels. Look at the code in `src/bin/www`.
 
 ### Running the application
 1. Point your browser to `https://localhost:3000`. Since the application uses self signed SSL certificates you will receive a warning and will have to trust the certificate.
@@ -46,9 +46,9 @@ To access the application point your browser to `https://[IP OF DOCKER HOST]:300
 The application in it self if a fairly straight forward web application based on the [Express](http://expressjs.com) web application framework. The [Jade](http://jade-lang.com) templating system to render html.
 From a Diglias integration point of view there are really three source files that is of interest:
 
-*  `routes/index.js` - This is where the application specific logics are implemented as a set of URL handlers that communiate with the Diglias server trough the users browser.
-*  `diglias-conf.json` - configuration data related to Diglais.
-*  `./eapi-client` - A separate npm package with a module that implements some of the API specific logics, this package can be extracted and reused in real world integration implementations.
+*  `src/routes/index.js` - This is where the application specific logics are implemented as a set of URL handlers that communiate with the Diglias server trough the users browser.
+*  `src/diglias-conf.json` - configuration data related to Diglais.
+*  `eapi-client/` - A separate npm package with a module that implements some of the API specific logics, this package can be extracted and reused in real world integration implementations.
 
 ## Contact and feedback
 Any questions, or feedback on the code or Diglias in general?
