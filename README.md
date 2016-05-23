@@ -30,6 +30,11 @@ The port number and some other runtime attributes can be managed trough environm
 1. Point your browser to `https://localhost:3000`. Since the application uses self signed SSL certificates you will receive a warning and will have to trust the certificate.
 2. Click the link **Authenticate**. Your browser should now get redirected to the Diglias server that will render a QR code on the screen.
 3. Use your Diglias Me id to authenticate yourself to the Diglias system.
+	4. If the Diglias Me in use is new (i.e. is missing a verified personal identification number) the first authentication will fail. You will be presented with a form where you are expected to submit a personal identification number. 
+	5. When the form has been submitted a new QR code will be rendered. Use your Diglias 	Me to scan the code.
+	6. Since you are adding a verified attribute to the Diglias ME you will be asked to 	enter create a PIN, verify it and enter it a third time.
+	7. Confirm that the personal idenfificatiion number is correct and add it to the 	Diglais ME.
+	8. The process will start over from step 3 
 4. If the authentication is successful you will be directed back to the application where all the supplied user properties will be rendered on a page.
 
 ## Running in Docker

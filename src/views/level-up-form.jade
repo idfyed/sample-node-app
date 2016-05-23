@@ -1,0 +1,17 @@
+//-
+//- Copyright 2016 (C) Diglias AB
+//-
+//- @author jonas
+//-
+extends layout
+
+block content
+    h1= 'Level-up required'
+    p The diglias profile is missing verified personal identification number. Please supply a PIN.
+    form(name="pin-form", method="POST", action="/authenticate/begin-level-up")
+        div.input
+            span.label PIN
+            input(type="text", name="pin")
+        div.actions
+            input(type="submit", value="Level-up")
+  
