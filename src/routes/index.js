@@ -121,7 +121,7 @@ router.get('/authenticate/reject', function(req, res, next) {
 
 /*
 * The level up form posts to this URL, start a authentication flow
-* using the amabssador relying party and include the PIN as a parameter
+* using the amabassador relying party and include the PIN as a parameter
 * in the request.
 */
 
@@ -134,7 +134,7 @@ router.post('/authenticate/begin-level-up', function( req,res, next ){
     
     params.auth_companyname = conf.auth_companyname;
     
-    // Add application specific options (URL:s)
+    // Add level-up specific options (URL:s)
     params.auth_returnlink = buildEndpointUrl(req, "authenticate/level-up-success");
     params.auth_cancellink = buildEndpointUrl(req, "authenticate/cancel");
     params.auth_rejectlink = buildEndpointUrl(req, "authenticate/reject");
@@ -144,10 +144,10 @@ router.post('/authenticate/begin-level-up', function( req,res, next ){
     // that is stable bewteen HTTP requests.
     params.auth_requestid = "xxxxxxxxxxxxxxxx";
     
-    // Add the PIN supplied in the form as a parameter to
+    // Add the PIN supplied in the form as a parameter
     params.auth_rp_personalIdentificationNumber = req.body.pin;
 
-    // Add the timestamp required when perorming a level-up flow
+    // Add the timestamp required when performing a level-up flow
     params.auth_timestamp =  dateFormat(Date(), "isoUtcDateTime");
 
     // Build the URL and redirect the users browser to it.
