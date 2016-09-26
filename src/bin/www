@@ -40,6 +40,7 @@ var options = {
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+
 /**
  * Create HTTP server.
  */
@@ -53,6 +54,7 @@ var server = https.createServer(options, app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+console.log("Server listeing on port", port);
 
 /**
  * Normalize a port into a number, string, or false.
