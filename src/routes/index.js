@@ -44,7 +44,16 @@ function buildEndpointUrl(req, endpoint) {
  */
 
 function loadDigliasConf() {
-    return JSON.parse(fs.readFileSync("./src/diglias-conf.json", 'utf8'));
+    
+    var conf = JSON.parse(fs.readFileSync("./src/diglias-conf.json", 'utf8'));
+
+    // Default to using the prodTest environment if not specified
+    // in the configuration file.
+    if ( !conf.hasOwnProperty('endPoint')) {
+        conf.endPoint = 'prodTest';
+    }
+
+    return conf;
 }
 
 /**
@@ -55,11 +64,11 @@ function loadDigliasConf() {
 router.get('/authenticate', function(req, res, next) {
 
     // Load relying party cofiguration from file
-    var conf = loadDigliasConf().login;
+    var conf = loadDigliasConf();
 
     params = {};
     
-    params.auth_companyname = conf.auth_companyname;
+    params.auth_companyname = conf.login.auth_companyname;
     
     // Add application specific options (URL:s)
     params.auth_returnlink = buildEndpointUrl(req, "authenticate/success");
@@ -72,7 +81,7 @@ router.get('/authenticate', function(req, res, next) {
     params.auth_requestid = "xxxxxxxxxxxxxxxx";
 
     // Build the URL and redirect the users browser to it.
-    res.redirect(Diglias.buildAuthnRequestUrl('prodTest', conf.mac_key, params));
+    res.redirect(Diglias.buildAuthnRequestUrl( conf.endPoint, conf.login.mac_key, params));
 });
 
 /**
@@ -128,11 +137,11 @@ router.get('/authenticate/reject', function(req, res, next) {
 router.post('/authenticate/begin-level-up', function( req,res, next ){
     
     // Load relying party cofiguration from file
-    var conf = loadDigliasConf().levelUp;
+    var conf = loadDigliasConf();
 
     params = {};
     
-    params.auth_companyname = conf.auth_companyname;
+    params.auth_companyname = conf.levelUp.auth_companyname;
     
     // Add level-up specific options (URL:s)
     params.auth_returnlink = buildEndpointUrl(req, "authenticate/level-up-success");
@@ -151,7 +160,7 @@ router.post('/authenticate/begin-level-up', function( req,res, next ){
     params.auth_timestamp =  dateFormat(Date(), "isoUtcDateTime");
 
     // Build the URL and redirect the users browser to it.
-    res.redirect(Diglias.buildAuthnRequestUrl('prodTest', conf.mac_key, params));
+    res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.levelUp.mac_key, params));
     
 });
 
