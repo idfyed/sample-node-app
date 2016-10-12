@@ -63,6 +63,7 @@ module.exports = {
         });
 
         var envEndpoints = {
+            build: "https://build.diglias.com/main-eapi/begin",
             prod: "https://login.diglias.com/main-eapi/begin",
             prodTest: "https://prodtest-login.diglias.com/main-eapi/begin",
             test: "https://test.diglias.com/main-eapi/begin"
