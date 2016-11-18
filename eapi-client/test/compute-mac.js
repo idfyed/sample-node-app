@@ -2,12 +2,12 @@
  * Copyright 2016 (C) Diglias AB
  *
  * @author jonas
- * 
+ *
  */
 
 var assert = require('chai').assert;
 
-var computeMac = require('../src/compute-mac');
+var computeMac = require('../lib/compute-mac');
 var testData = require('./test-data');
 
 describe('compute-mac', function () {

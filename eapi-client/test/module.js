@@ -2,12 +2,12 @@
  * Copyright 2016 (C) Diglias AB
  *
  * @author jonas
- * 
+ *
  */
 
 var assert = require('chai').assert;
 
-var EAPI = require('../src/index');
+var EAPI = require('../lib');
 
 var testData = require('./test-data');
 

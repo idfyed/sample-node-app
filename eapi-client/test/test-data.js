@@ -2,7 +2,7 @@
  * Copyright 2016 (C) Diglias AB
  *
  * @author jonas
- * 
+ *
  */
 
 module.exports = {
@@ -28,8 +28,8 @@ module.exports = {
         auth_rejectlink: 'https://localhost:3000/authenticate/reject',
         auth_requestid: 'xxxxxxxxxxxxxxxx'
     },
-    
+
     requestMAC: "2AE3ACA4F918DD2ED0A562CA74031B5C",
 
     prodRequestURL: "https://login.diglias.com/main-eapi/begin?auth_companyname=playground&mac_key=LW4eUhQkJfwJGgQU8JCT/g==&auth_returnlink=https://localhost:3000/authenticate/success&auth_cancellink=https://localhost:3000/authenticate/cancel&auth_rejectlink=https://localhost:3000/authenticate/reject&auth_requestid=xxxxxxxxxxxxxxxx&mac=2AE3ACA4F918DD2ED0A562CA74031B5C"
-}
+};
