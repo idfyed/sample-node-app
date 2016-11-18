@@ -4,6 +4,7 @@
  * @author jonas
  *
  */
+'use strict';
 
 var assert = require('chai').assert;
 
@@ -11,10 +12,10 @@ var computeMac = require('../lib/compute-mac');
 var testData = require('./test-data');
 
 describe('compute-mac', function () {
-    it("#computeMac-response Should return the expected MAC", function () {
-        assert.equal(testData.responseMAC, computeMac(testData.responseData, testData.key));
-    });
-    it("#computeMac-request Should return the expected MAC", function () {
-        assert.equal(testData.requestMAC, computeMac(testData.requestData, testData.key));
-    });
+  it('#computeMac-response Should return the expected MAC', function () {
+    assert.equal(testData.responseMAC, computeMac(testData.responseData, testData.key));
+  });
+  it('#computeMac-request Should return the expected MAC', function () {
+    assert.equal(testData.requestMAC, computeMac(testData.requestData, testData.key));
+  });
 });

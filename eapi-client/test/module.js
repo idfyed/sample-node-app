@@ -4,6 +4,7 @@
  * @author jonas
  *
  */
+'use strict';
 
 var assert = require('chai').assert;
 
@@ -11,14 +12,12 @@ var EAPI = require('../lib');
 
 var testData = require('./test-data');
 
-
 describe('module-interface', function () {
-    it("#veirifyAuthnResponse", function () {
-        assert.isTrue(EAPI.veirifyAuthnResponse(testData.responseData, testData.key));
-    });
+  it('#veirifyAuthnResponse', function () {
+    assert.isTrue(EAPI.veirifyAuthnResponse(testData.responseData, testData.key));
+  });
 
-    it("#buildAuthnRequestUrl", function () {
-        assert.equal(testData.prodRequestURL, EAPI.buildAuthnRequestUrl('prod', testData.key, testData.requestData));
-    });
-
+  it('#buildAuthnRequestUrl', function () {
+    assert.equal(testData.prodRequestURL, EAPI.buildAuthnRequestUrl('prod', testData.key, testData.requestData));
+  });
 });

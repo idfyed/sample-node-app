@@ -5,6 +5,8 @@
  *
  */
 
+'use strict';
+
 /**
  * Computes a MAC according to the API specification.
  */
@@ -13,23 +15,23 @@
 var Hashes = require('jshashes');
 
 module.exports = function (values, macKey) {
-
   // Sort the values in alphabetical order bye name
   var keys = Object.keys(values).sort();
 
-  // Concatenate all valid paramateres to one string
-  var macData = "";
+  // Concatenate all valid parameters to one string
+  var macData = '';
 
   keys.forEach(function (key) {
     // Only values prefixed with "auth_" should be hashed
-    if (key.match("auth_.*")) {
+    // noinspection JSCheckFunctionSignatures
+    if (key.match('auth_.*')) {
       if (macData.length > 0) {
         // Separate parameters with "&"
-        macData = macData.concat("&");
+        macData = macData.concat('&');
       }
 
       // Sort the values of a parameter alphabetically
-      value = "";
+      var value = '';
       values[key].split(',').sort().forEach(function (val) {
         if (value.length > 0) {
           value = value.concat(',');
@@ -37,7 +39,7 @@ module.exports = function (values, macKey) {
         value = value.concat(val);
       });
 
-      macData = macData.concat(key.concat("=").concat(value));
+      macData = macData.concat(key.concat('=').concat(value));
     }
   });
 

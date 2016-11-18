@@ -16,7 +16,7 @@ eapiClient('Rainbow');
 ```
 ## License
 
- © [Jonas Andreasson](https://twitter.com/Crusaider)
+ © [Diglias AB](https://diglias.com)
 
 
 [npm-image]: https://badge.fury.io/js/eapi-client.svg
