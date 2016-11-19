@@ -1,6 +1,3 @@
-/node_modules/
-/eapi-client/node_modules/
-/eapi-client/.vscode/
-/.vscode/
-/*.log
+node_modules
+*.log
 diglias-node-sample-app.zip
