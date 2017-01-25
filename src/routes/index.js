@@ -2,11 +2,11 @@
  * Copyright 2016 (C) Diglias AB
  *
  * @author jonas
- * 
+ *
  */
 
 var dateFormat = require('dateformat');
-
+var randomString = require('randomstring');
 var express = require('express');
 var fs = require('fs');
 var Diglias = require('diglias-eapi-client');
@@ -24,18 +24,18 @@ var callbackBaseUrl = "https://localhost:3000/";
 
 
 /**
- * Finds our protocol, hostname and port from the request and 
+ * Finds our protocol, hostname and port from the request and
  * adds the supplied URL to it.
  */
 
 function buildEndpointUrl(req, endpoint) {
     // TODO Dynamically findput protocol, hostname, port etc...
-    
+
     var prot = "http";
     if ( req.connection.encrypted ) {
         prot = "https";
     }
-    
+
     return prot.concat("://", req.headers.host, "/", endpoint);
 }
 
@@ -44,7 +44,7 @@ function buildEndpointUrl(req, endpoint) {
  */
 
 function loadDigliasConf() {
-    
+
     var conf = JSON.parse(fs.readFileSync("./src/diglias-conf.json", 'utf8'));
 
     // Default to using the prodTest environment if not specified
@@ -67,15 +67,15 @@ router.get('/authenticate', function(req, res, next) {
     var conf = loadDigliasConf();
 
     params = {};
-    
+
     params.auth_companyname = conf.login.auth_companyname;
-    
+
     // Add application specific options (URL:s)
     params.auth_returnlink = buildEndpointUrl(req, "authenticate/success");
     params.auth_cancellink = buildEndpointUrl(req, "authenticate/cancel");
     params.auth_rejectlink = buildEndpointUrl(req, "authenticate/reject");
 
-    // Add request id - in this example it is a dummy, in a real world 
+    // Add request id - in this example it is a dummy, in a real world
     // application it should be a unique identifier of the login reqest
     // that is stable bewteen HTTP requests.
     params.auth_requestid = "xxxxxxxxxxxxxxxx";
@@ -85,7 +85,7 @@ router.get('/authenticate', function(req, res, next) {
 });
 
 /**
- * The Diglias server will redirect the users browser to POST to this URL 
+ * The Diglias server will redirect the users browser to POST to this URL
  * once the authenitcation has been sucessfullty completed.
  */
 
@@ -101,7 +101,7 @@ router.post('/authenticate/success', function(req, res, next) {
 });
 
 /**
- * The Diglias server will redirect the users browser this URL 
+ * The Diglias server will redirect the users browser this URL
  * if the user cancels the authentication.
  */
 
@@ -110,21 +110,21 @@ router.get('/authenticate/cancel', function(req, res, next) {
 });
 
 /**
- * The Diglias server will redirect the users browser this URL 
+ * The Diglias server will redirect the users browser this URL
  * if the authentication gets rejected by the Diglais server.
  */
 
 router.get('/authenticate/reject', function(req, res, next) {
-    
+
     if ( req.query.error_code != '604' ) {
         res.render('reject', { code: req.query.error_code,
                                 message: req.query.error_message });
     } else {
-        // Error code 604 means that the user i missing a verified 
+        // Error code 604 means that the user i missing a verified
         // attribute. Render a form that allows the user to "level-up"
-        // trough ambassador authentication where a attribute is 
+        // trough ambassador authentication where a attribute is
         // attached to the user profile with the users permission.
-        res.render('level-up-form');    
+        res.render('level-up-form');
     }
 });
 
@@ -135,24 +135,24 @@ router.get('/authenticate/reject', function(req, res, next) {
 */
 
 router.post('/authenticate/begin-level-up', function( req,res, next ){
-    
+
     // Load relying party cofiguration from file
     var conf = loadDigliasConf();
 
     params = {};
-    
+
     params.auth_companyname = conf.levelUp.auth_companyname;
-    
+
     // Add level-up specific options (URL:s)
     params.auth_returnlink = buildEndpointUrl(req, "authenticate/level-up-success");
     params.auth_cancellink = buildEndpointUrl(req, "authenticate/cancel");
     params.auth_rejectlink = buildEndpointUrl(req, "authenticate/reject");
 
-    // Add request id - in this example it is a dummy, in a real world 
+    // Add request id - in this example it is a dummy, in a real world
     // application it should be a unique identifier of the login reqest
     // that is stable bewteen HTTP requests.
     params.auth_requestid = "xxxxxxxxxxxxxxxx";
-    
+
     // Add the PIN supplied in the form as a parameter
     params.auth_rp_personalIdentificationNumber = req.body.pin;
 
@@ -161,11 +161,11 @@ router.post('/authenticate/begin-level-up', function( req,res, next ){
 
     // Build the URL and redirect the users browser to it.
     res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.levelUp.mac_key, params));
-    
+
 });
 
 /**
- * The Diglias server will redirect the users browser to POST to this URL 
+ * The Diglias server will redirect the users browser to POST to this URL
  * once the level-up has been sucessfullty completed.
  */
 

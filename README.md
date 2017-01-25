@@ -27,38 +27,52 @@ In the root of the repository issue the command `npm start`. This will start nod
 The port number and some other runtime attributes can be managed trough environment variabels. Look at the code in `src/bin/www`.
 
 ### Running the application
-1. Point your browser to `https://localhost:3000`. Since the application uses self signed SSL certificates you will receive a warning and will have to trust the certificate.
-2. Click the link **Authenticate**. Your browser should now get redirected to the Diglias server that will render a QR code on the screen.
-3. Use your Diglias Me id to authenticate yourself to the Diglias system.
-	4. If the Diglias Me in use is new (i.e. is missing a verified personal identification number) the first authentication will fail. You will be presented with a form where you are expected to submit a personal identification number. 
-	5. When the form has been submitted a new QR code will be rendered. Use your Diglias 	Me to scan the code.
-	6. Since you are adding a verified attribute to the Diglias ME you will be asked to 	enter create a PIN, verify it and enter it a third time.
-	7. Confirm that the personal idenfificatiion number is correct and add it to the 	Diglais ME.
-	8. The process will start over from step 3 
-4. If the authentication is successful you will be directed back to the application where all the supplied user properties will be rendered on a page.
+
+  1. Point your browser to `https://localhost:3000`. Since the application uses self signed SSL certificates you will receive a warning and will have to trust the certificate.
+  1. Click the link **Authenticate**. Your browser should now get redirected to the Diglias server that will render a QR code on the screen.
+  1. Use your Diglias Me id to authenticate yourself to the Diglias system.
+
+	  1. If the Diglias Me in use is new (i.e. is missing a verified personal identification number) the first authentication will fail. You will be presented with a form where you are expected to submit a personal identification number. 
+	  1. When the form has been submitted a new QR code will be rendered. Use your Diglias 	Me to scan the code.
+	  1. Since you are adding a verified attribute to the Diglias ME you will be asked to 	enter create a PIN, verify it and enter it a third time.
+	  1. Confirm that the personal idenfificatiion number is correct and add it to the 	Diglais ME.
+	  1. The process will start over from step 3 
+
+  1. If the authentication is successful you will be directed back to the application where all the supplied user properties will be rendered on a page.
 
 ## Running in Docker
+
 If you prefer, you can build a docker image of the application and run it in a docker host. In that case it will not be necessary to install node.js and npm and you will not start the application in your local host.
+
 ### Build the Image using docker
+
 Issue the command `docker build -t diglias-sample-app .` in the root directory of the repository. This will build a image in your docker host named `diglias-sample-app`.
+
 ### Run the Image
+
 The application can be started in the docker host using the command `docker run -p 3000 --name=diglias diglias-sample-app`. This will start a container named `diglias` and expose the application on port 3000 of the docker host.
+
 ### Build and Run with Docker Compose
+
 If you have `docker-compose` available you can build and run in one command. Chnage to the root of the repository and issue `docker-compose up`.
 
 To access the application point your browser to `https://[IP OF DOCKER HOST]:3000`. You can find out the IP of the docker host using `docker-machine ip`.
+
 ## Application structure
+
 The application in it self if a fairly straight forward web application based on the [Express](http://expressjs.com) web application framework. The [Jade](http://jade-lang.com) templating system is used to render html.
 From a Diglias integration point of view there are really three source files that is of interest:
 
-*  `src/routes/index.js` - This is where the application specific logics are implemented as a set of URL handlers that communiate with the Diglias service trough the users browser.
-*  `src/diglias-conf.json` - configuration data related to Diglias.
-*  `eapi-client/` - A separate **npm** package with a module that implements some of the API specific logics, this package can be extracted and reused in real world integration implementations.
+* `src/routes/index.js` - This is where the application specific logics are implemented as a set of URL handlers that communiate with the Diglias service trough the users browser.
+* `src/diglias-conf.json` - configuration data related to Diglias.
+* `eapi-client/` - A separate **npm** package with a module that implements some of the API specific logics, this package can be extracted and reused in real world integration implementations.
 
 ### Configuration file
+
 The file `src/diglias-conf.json` contains configuration data related to the integration with Diglias the Diglias Go service, there are three main sections of informaton:
 
 #### endPoint
+
 The `endPoint` configures what environment to use, possible values are `prod`,`prodTest` and `test`. The value is optional and if omitted the application will default to use the `prodTest` environment.
  
 ```json
