@@ -18,19 +18,12 @@ router.get('/', function(req, res, next) {
     res.render('index');
 });
 
-
-/* Redirect the users agent to the Diglias GO athentication server */
-var callbackBaseUrl = "https://localhost:3000/";
-
-
 /**
  * Finds our protocol, hostname and port from the request and
  * adds the supplied URL to it.
  */
 
 function buildEndpointUrl(req, endpoint) {
-    // TODO Dynamically findput protocol, hostname, port etc...
-
     var prot = "http";
     if ( req.connection.encrypted ) {
         prot = "https";
