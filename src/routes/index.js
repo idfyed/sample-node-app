@@ -58,7 +58,7 @@ function loadDigliasConf() {
 
 /**
  * Checks that a cookie set has the same content as the
- * resonponse code
+ * resonponse code.
  */
 
 function validateRequestId( req, cookie ) {
@@ -75,7 +75,7 @@ function validateLevelUpRequestId( req ) {
 
 /**
  * Prepare a message to the Diglias server and redirect the users
- * browser to Diglias to ask the user to authentica.
+ * browser to Diglias to ask the user to authenticate.
  */
 
 router.get('/authenticate', function(req, res, next) {
