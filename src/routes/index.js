@@ -75,10 +75,10 @@ router.get('/authenticate', function(req, res, next) {
     params.auth_cancellink = buildEndpointUrl(req, "authenticate/cancel");
     params.auth_rejectlink = buildEndpointUrl(req, "authenticate/reject");
 
-    // Add request id - in this example it is a dummy, in a real world
-    // application it should be a unique identifier of the login reqest
-    // that is stable bewteen HTTP requests.
-    params.auth_requestid = "xxxxxxxxxxxxxxxx";
+    // Generate a random request id and store it in a cookie to be able
+    // to validate the response.
+    params.auth_requestid = randomString.generate(16);
+    res.cookie('authRequestId', params.auth_requestid)
 
     // Build the URL and redirect the users browser to it.
     res.redirect(Diglias.buildAuthnRequestUrl( conf.endPoint, conf.login.mac_key, params));
@@ -93,8 +93,13 @@ router.post('/authenticate/success', function(req, res, next) {
 
     // Validate that the reponse has not been tampered with
     if (Diglias.veirifyAuthnResponse(req.body, loadDigliasConf().login.mac_key)) {
-        // Render the content of the reponse
-        res.render('success', { body: req.body });
+        // Validate that the response is related to our request
+        if ( req.cookies.authRequestId == req.body.auth_inresponseto ) {
+          // Render the content of the reponse
+          res.render('success', { body: req.body });
+        } else {
+          res.render('invalid-request');
+        }
     } else {
         res.render('invalid-mac');
     }
