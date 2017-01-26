@@ -57,6 +57,23 @@ function loadDigliasConf() {
 }
 
 /**
+ * Checks that a cookie set has the same content as the
+ * resonponse code
+ */
+
+function validateRequestId( req, cookie ) {
+  return req.cookies[cookie] == req.body.auth_inresponseto;
+}
+
+function validateAuthRequestId( req ) {
+  return validateRequestId( req, 'authRequestId');
+}
+
+function validateLevelUpRequestId( req ) {
+  return validateRequestId( req, 'levelUpRequestId');
+}
+
+/**
  * Prepare a message to the Diglias server and redirect the users
  * browser to Diglias to ask the user to authentica.
  */
@@ -94,7 +111,7 @@ router.post('/authenticate/success', function(req, res, next) {
     // Validate that the reponse has not been tampered with
     if (Diglias.veirifyAuthnResponse(req.body, loadDigliasConf().login.mac_key)) {
         // Validate that the response is related to our request
-        if ( req.cookies.authRequestId == req.body.auth_inresponseto ) {
+        if ( validateAuthRequestId( req ) ) {
           // Render the content of the reponse
           res.render('success', { body: req.body });
         } else {
@@ -153,10 +170,10 @@ router.post('/authenticate/begin-level-up', function( req,res, next ){
     params.auth_cancellink = buildEndpointUrl(req, "authenticate/cancel");
     params.auth_rejectlink = buildEndpointUrl(req, "authenticate/reject");
 
-    // Add request id - in this example it is a dummy, in a real world
-    // application it should be a unique identifier of the login reqest
-    // that is stable bewteen HTTP requests.
-    params.auth_requestid = "xxxxxxxxxxxxxxxx";
+    // Generate a random request id and store it in a cookie to be able
+    // to validate the response.
+    params.auth_requestid = randomString.generate(16);
+    res.cookie('levelUpRequestId', params.auth_requestid)
 
     // Add the PIN supplied in the form as a parameter
     params.auth_rp_personalIdentificationNumber = req.body.pin;
@@ -178,9 +195,14 @@ router.post('/authenticate/level-up-success', function(req, res, next) {
 
     // Validate that the reponse has not been tampered with
     if (Diglias.veirifyAuthnResponse(req.body, loadDigliasConf().levelUp.mac_key)) {
-        // Level up flow has been completed sucessfully, redirect to start authentication
-        // flow.
-        res.redirect('/authenticate');
+        // Validate that the response is related to our request
+        if ( validateLevelUpRequestId( req ) ) {
+          // Level up flow has been completed sucessfully, redirect to start authentication
+          // flow.
+          res.redirect('/authenticate');
+        } else {
+          res.render('invalid-request');
+        }
     } else {
         res.render('invalid-mac');
     }
