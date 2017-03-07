@@ -1,5 +1,5 @@
 {
-  "name": "eapi-client",
+  "name": "diglias-eapi-client",
   "version": "0.1.0",
   "description": "Module to aid in the implementation of Diglias EAPI integrations.",
   "homepage": "https://diglias.com",

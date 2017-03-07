@@ -1,3 +1,4 @@
 node_modules
 *.log
 diglias-node-sample-app.zip
+/eapi-client/diglias-eapi-client-0.1.0.tgz

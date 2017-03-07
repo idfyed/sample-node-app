@@ -35,7 +35,23 @@ installed and available on the path.
 ## Installation
 
 Clone the repository in your preferred location. Change to the root
-directory of the cloned repository and issue the command: `npm install`.
+directory of the cloned repository and issue  the following commands:
+
+### Build the sub package `Diglias EAPI Client`
+
+```
+$ cd eapi-client
+$ npm install
+$ npm pack
+$ cd ..
+```
+
+### Install main packe node dependencies
+
+```
+$ npm install
+```
+
 This will download and install all the necessary dependencies in a
 subdirectory named `node_modules`.
 
