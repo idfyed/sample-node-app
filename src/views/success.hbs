@@ -4,7 +4,7 @@ Copyright 2017 (C) Diglias AB
 }}
 {{> header}}
 <h1>Success</h1>
-<p>Authenticaton sucessful</p>
+<p>Authenticaton sucessful, the following data was received from the Diglias GO service.</p>
 <table>
     <tr>
         <th>Parameter</th>
@@ -17,5 +17,10 @@ Copyright 2017 (C) Diglias AB
         </tr>
     {{/each}}
 </table>
-    <p><a href="/authenticate">Authenticate again</a></p>
+<h2>Back End Connect</h2>
+<p>The diglias user id of the user is now known and it is possible to add data to the Diglias profile of the user trough the RP Management API.</p>
+<form method="post" action="/rp-management">
+<input type="hidden" name="userid" value="{{body.auth_userid}}">
+<p><label>Alias: </label><input type="text" name="alias"></p>
+<p><input type="submit" value="Add to profile" class="dButton"></p>
 {{> footer}}

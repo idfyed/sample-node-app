@@ -17,4 +17,7 @@ router.get('/', function (req, res, next) {
 /* Routes for the authenticate flow */
 router.use('/authenticate', require('./authenticate'));
 
+/* Routes for RP Management */
+router.use('/rp-management', require('./rp-management'));
+
 module.exports = router;

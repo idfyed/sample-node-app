@@ -1,11 +1,12 @@
 {
-    "endPoint": "prodTest",
+    "endPoint": "test",
     "login": {
         "auth_companyname": "playground",
-        "mac_key": "LW4eUhQkJfwJGgQU8JCT/g=="
+        "mac_key": "PNKVwU4S+TLvMm2QwTVMkQ=="
     },
-    "levelUp": {
-        "auth_companyname": "playgroundAmbassador",
-        "mac_key": "5osdC7Gs6OfHdHO9ZB7DaQ=="
+    "rpManagement": {
+      "companyname": "playground",
+      "user": "playground",
+      "secret": "mIl9bYOf/mSq5DGjgACyXw=="
     }
 }
