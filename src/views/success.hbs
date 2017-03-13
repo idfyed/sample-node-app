@@ -1,0 +1,21 @@
+{{!
+Copyright 2017 (C) Diglias AB
+@author jonas
+}}
+{{> header}}
+<h1>Success</h1>
+<p>Authenticaton sucessful</p>
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+    </tr>
+    {{#each body}}
+        <tr>
+            <td>{{@key}}</td>
+            <td>{{this}}</td>
+        </tr>
+    {{/each}}
+</table>
+    <p><a href="/authenticate">Authenticate again</a></p>
+{{> footer}}

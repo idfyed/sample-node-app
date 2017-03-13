@@ -14,15 +14,21 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+var hbs = require('hbs');
+hbs.registerPartials(__dirname + '/views/partials' , function(err){
+    if ( err ) {
+        logger.error('Failed to set upp view partials directory');
+    }
+});
 
 app.use('/', routes);
 
@@ -56,6 +62,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;

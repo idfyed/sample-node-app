@@ -13,8 +13,10 @@ var Diglias = require('diglias-eapi-client');
 
 var router = express.Router();
 
+var _ = require('lodash');
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     res.render('index');
 });
 
@@ -25,7 +27,7 @@ router.get('/', function(req, res, next) {
 
 function buildEndpointUrl(req, endpoint) {
     var prot = "http";
-    if ( req.connection.encrypted ) {
+    if (req.connection.encrypted) {
         prot = "https";
     }
 
@@ -42,7 +44,7 @@ function loadDigliasConf() {
 
     // Default to using the prodTest environment if not specified
     // in the configuration file.
-    if ( !conf.hasOwnProperty('endPoint')) {
+    if (!conf.hasOwnProperty('endPoint')) {
         conf.endPoint = 'prodTest';
     }
 
@@ -54,16 +56,16 @@ function loadDigliasConf() {
  * resonponse code.
  */
 
-function validateRequestId( req, cookie ) {
-  return req.cookies[cookie] == req.body.auth_inresponseto;
+function validateRequestId(req, cookie) {
+    return req.cookies[cookie] == req.body.auth_inresponseto;
 }
 
-function validateAuthRequestId( req ) {
-  return validateRequestId( req, 'authRequestId');
+function validateAuthRequestId(req) {
+    return validateRequestId(req, 'authRequestId');
 }
 
-function validateLevelUpRequestId( req ) {
-  return validateRequestId( req, 'levelUpRequestId');
+function validateLevelUpRequestId(req) {
+    return validateRequestId(req, 'levelUpRequestId');
 }
 
 /**
@@ -71,7 +73,7 @@ function validateLevelUpRequestId( req ) {
  * browser to Diglias to ask the user to authenticate.
  */
 
-router.get('/authenticate', function(req, res, next) {
+router.get('/authenticate', function (req, res, next) {
 
     // Load relying party cofiguration from file
     var conf = loadDigliasConf();
@@ -91,7 +93,7 @@ router.get('/authenticate', function(req, res, next) {
     res.cookie('authRequestId', params.auth_requestid)
 
     // Build the URL and redirect the users browser to it.
-    res.redirect(Diglias.buildAuthnRequestUrl( conf.endPoint, conf.login.mac_key, params));
+    res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
 });
 
 /**
@@ -99,16 +101,16 @@ router.get('/authenticate', function(req, res, next) {
  * once the authenitcation has been sucessfullty completed.
  */
 
-router.post('/authenticate/success', function(req, res, next) {
+router.post('/authenticate/success', function (req, res, next) {
 
     // Validate that the reponse has not been tampered with
     if (Diglias.veirifyAuthnResponse(req.body, loadDigliasConf().login.mac_key)) {
         // Validate that the response is related to our request
-        if ( validateAuthRequestId( req ) ) {
-          // Render the content of the reponse
-          res.render('success', { body: req.body });
+        if (validateAuthRequestId(req)) {
+            // Render the content of the reponse
+            res.render('success', { body: _.clone(req.body) });
         } else {
-          res.render('invalid-request');
+            res.render('invalid-request');
         }
     } else {
         res.render('invalid-mac');
@@ -120,7 +122,7 @@ router.post('/authenticate/success', function(req, res, next) {
  * if the user cancels the authentication.
  */
 
-router.get('/authenticate/cancel', function(req, res, next) {
+router.get('/authenticate/cancel', function (req, res, next) {
     res.render('cancel');
 });
 
@@ -129,11 +131,13 @@ router.get('/authenticate/cancel', function(req, res, next) {
  * if the authentication gets rejected by the Diglais server.
  */
 
-router.get('/authenticate/reject', function(req, res, next) {
+router.get('/authenticate/reject', function (req, res, next) {
 
-    if ( req.query.error_code != '604' ) {
-        res.render('reject', { code: req.query.error_code,
-                                message: req.query.error_message });
+    if (req.query.error_code != '604') {
+        res.render('reject', {
+            code: req.query.error_code,
+            message: req.query.error_message
+        });
     } else {
         // Error code 604 means that the user i missing a verified
         // attribute. Render a form that allows the user to "level-up"
@@ -144,12 +148,12 @@ router.get('/authenticate/reject', function(req, res, next) {
 });
 
 /*
-* The level up form posts to this URL, start a authentication flow
-* using the amabassador relying party and include the PIN as a parameter
-* in the request.
-*/
+ * The level up form posts to this URL, start a authentication flow
+ * using the amabassador relying party and include the PIN as a parameter
+ * in the request.
+ */
 
-router.post('/authenticate/begin-level-up', function( req,res, next ){
+router.post('/authenticate/begin-level-up', function (req, res, next) {
 
     // Load relying party cofiguration from file
     var conf = loadDigliasConf();
@@ -172,7 +176,7 @@ router.post('/authenticate/begin-level-up', function( req,res, next ){
     params.auth_rp_personalIdentificationNumber = req.body.pin;
 
     // Add the timestamp required when performing a level-up flow
-    params.auth_timestamp =  dateFormat(Date(), "isoUtcDateTime");
+    params.auth_timestamp = dateFormat(Date(), "isoUtcDateTime");
 
     // Build the URL and redirect the users browser to it.
     res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.levelUp.mac_key, params));
@@ -184,17 +188,17 @@ router.post('/authenticate/begin-level-up', function( req,res, next ){
  * once the level-up has been sucessfullty completed.
  */
 
-router.post('/authenticate/level-up-success', function(req, res, next) {
+router.post('/authenticate/level-up-success', function (req, res, next) {
 
     // Validate that the reponse has not been tampered with
     if (Diglias.veirifyAuthnResponse(req.body, loadDigliasConf().levelUp.mac_key)) {
         // Validate that the response is related to our request
-        if ( validateLevelUpRequestId( req ) ) {
-          // Level up flow has been completed sucessfully, redirect to start authentication
-          // flow.
-          res.redirect('/authenticate');
+        if (validateLevelUpRequestId(req)) {
+            // Level up flow has been completed sucessfully, redirect to start authentication
+            // flow.
+            res.redirect('/authenticate');
         } else {
-          res.render('invalid-request');
+            res.render('invalid-request');
         }
     } else {
         res.render('invalid-mac');
