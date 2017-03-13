@@ -4,5 +4,17 @@ Copyright 2017 (C) Diglias AB
 }}
 {{> header}}
 <h1>Diglias GO node.js sample application</h1>
-<p>Click the link to authenticate: <a href="/authenticate">Authenticate</a></p>
+<h2>Authenticate</h2>
+<p>When authenticating users as set of attributes will be requested from the user trough the Diglias app. By default the
+    attribute set to request is part of the configuration. Using EAPI is is possible to limit the requested
+    attributes to a subset of the configured attributes.</p>
+<form method="post" action="/authenticate">
+    <h3>Select attributes to request</h3>
+    <p><input type="checkbox" name="givenname">Given name ( <code>givenname</code> )</p>
+    <p><input type="checkbox" name="sn">Sir Name ( <code>sn</code> )</p>
+    <p><input type="checkbox" name="mobile">Mobile phone ( <code>mobile</code> )</p>
+    <p><input type="checkbox" name="email">E-mail adress ( <code>email</code> )</p>
+    <p><em>If none checked, default configuratuion will be used.</em></p>
+    <input type="submit" value="Authenticate" class="dButton">
+</form>
 {{> footer}}

@@ -21,7 +21,7 @@ var c = require('./common');
  * browser to Diglias to ask the user to authenticate.
  */
 
-router.get('/', function (req, res, next) {
+router.post('/', function (req, res, next) {
 
     // Load relying party cofiguration from file
     var conf = c.loadDigliasConf();
@@ -29,6 +29,21 @@ router.get('/', function (req, res, next) {
     var params = {};
 
     params.auth_companyname = conf.login.auth_companyname;
+
+    // Determine if the default set of attributes should be used or if a subset
+    // has been chosen.
+    if ( Object.keys(req.body).length > 0 ) {
+
+        // To use a sub set of the attributes, supply the names as a comma separated
+        // list on the parameter auth_attributes.
+        params.auth_attributes = "";
+        for ( var attr in req.body) {
+            if (params.auth_attributes.length > 0 ){
+                params.auth_attributes = params.auth_attributes.concat(',');
+            }
+            params.auth_attributes = params.auth_attributes.concat(attr);
+        }
+    }
 
     // Add application specific options (URL:s)
     params.auth_returnlink = c.buildEndpointUrl(req, "authenticate/success");
