@@ -1,12 +1,13 @@
 /**
  * Copyright 2017 (C) Diglias AB
  *
- * Routes for the normal authentication flow
+ * Routes for the normal authentication flow and web flow connect
  *
  * @author jonas
  *
  */
 
+var dateFormat = require('dateformat');
 var randomString = require('randomstring');
 var express = require('express');
 
@@ -44,6 +45,48 @@ router.post('/', function (req, res, next) {
             params.auth_attributes = params.auth_attributes.concat(attr);
         }
     }
+
+    // Add application specific options (URL:s)
+    params.auth_returnlink = c.buildEndpointUrl(req, "authenticate/success");
+    params.auth_cancellink = c.buildEndpointUrl(req, "authenticate/cancel");
+    params.auth_rejectlink = c.buildEndpointUrl(req, "authenticate/reject");
+
+    // Generate a random request id and store it in a cookie to be able
+    // to validate the response.
+    params.auth_requestid = randomString.generate(16);
+    res.cookie('authRequestId', params.auth_requestid);
+
+    // Build the URL and redirect the users browser to it.
+    res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
+});
+
+/**
+ * Prepare a message to the Diglias server and redirect the users
+ * browser to Diglias to ask the user to have a attribute added to
+ * their Diglias.
+ */
+
+router.post('/connect', function (req, res, next) {
+
+    // Load relying party cofiguration from file
+    var conf = c.loadDigliasConf();
+
+    var params = {};
+
+    params.auth_companyname = conf.login.auth_companyname;
+
+    // TODO: Switch alias to playground-string
+
+    // Add the value from the form as a auth_rp_* attribute
+    // For this to work, the RP will have to be configurd as a ambassodor for the attribute.
+    params.auth_rp_alias = req.body.value;
+
+    // Only show the ambassador attribute to the user, if this is omitted the user will be requested to give
+    // all attributes specified in the RP - this might seem ilogical depending on use case.
+    params.auth_attributes = 'alias';
+
+    // Add the timestamp required when performing a connect
+    params.auth_timestamp = dateFormat(Date(), "isoUtcDateTime");
 
     // Add application specific options (URL:s)
     params.auth_returnlink = c.buildEndpointUrl(req, "authenticate/success");
