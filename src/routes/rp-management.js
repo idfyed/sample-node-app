@@ -1,24 +1,21 @@
 /**
  * Copyright 2017 (C) Diglias AB
  *
- * Routes for backend connect trtough the RP Management API.
+ * Routes for backend connect trough the RP Management API.
  *
  * @author jonas
  *
  */
 
 var express = require('express');
-
-var Diglias = require('diglias-eapi-client');
 var router = express.Router();
-var _ = require('lodash');
 var request = require('request');
 
 var c = require('./common');
 
 /**
- * Prepare a message to the Diglias server and redirect the users
- * browser to Diglias to ask the user to authenticate.
+ * Call the Diglias service trough a backend channel and add a attribute
+ * to the Diglias users profile.
  */
 
 router.post('/', function (req, res, next) {
@@ -50,9 +47,10 @@ router.post('/', function (req, res, next) {
     body: requestBody
   };
 
+  // The base of the API endpoint
   var endpoint = 'https://test.diglias.com/rp-mgmt/attribute/v1.0/';
 
-  // Add on the company name
+  // add on the company name
   endpoint = endpoint.concat(conf.companyname);
 
   // and the user userid
