@@ -29,17 +29,7 @@ module.exports = function (values, macKey) {
         // Separate parameters with "&"
         macData = macData.concat('&');
       }
-
-      // Sort the values of a parameter alphabetically
-      var value = '';
-      values[key].split(',').sort().forEach(function (val) {
-        if (value.length > 0) {
-          value = value.concat(',');
-        }
-        value = value.concat(val);
-      });
-
-      macData = macData.concat(key.concat('=').concat(value));
+      macData = macData.concat(key.concat('=').concat(values[key]));
     }
   });
 
