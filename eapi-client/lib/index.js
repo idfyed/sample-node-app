@@ -86,6 +86,12 @@ module.exports = {
 
   veirifyAuthnResponse: function (responseBody, macKey) {
     return computeMac(responseBody, macKey) === responseBody.mac;
-  }
+  },
+
+  /**
+   * Re-export the computeMac function.
+   */
+  computeMac: computeMac
+
 };
 

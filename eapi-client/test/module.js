@@ -46,4 +46,10 @@ describe('module-interface', function () {
       assert(spy.threw());
     });
   });
+
+  describe('#computeMac', function () {
+    it('should be exported', function () {
+      assert(typeof EAPI.computeMac === 'function');
+    });
+  });
 });
