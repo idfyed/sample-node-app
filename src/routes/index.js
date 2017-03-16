@@ -20,4 +20,10 @@ router.use('/authenticate', require('./authenticate'));
 /* Routes for RP Management */
 router.use('/rp-management', require('./rp-management'));
 
+/* Route for App Initiated */
+router.use('/app-initiated', require('./app-initiated'));
+
+/* Route for emulation of static QR code scanning */
+router.use('/app-initiated', require('./app-initiated-emulation'));
+
 module.exports = router;

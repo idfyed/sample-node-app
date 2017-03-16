@@ -14,18 +14,30 @@ Copyright 2017 (C) Diglias AB
     <p><input type="checkbox" name="sn"><label>Sir Name ( <code>sn</code> )</label></p>
     <p><input type="checkbox" name="mobile"><label>Mobile phone ( <code>mobile</code> )</label></p>
     <p><input type="checkbox" name="email"><label>E-mail adress ( <code>email</code> )</label></p>
-    <p><input type="checkbox" name="playground_string"><label>Playground example attribute( <code>playground_string</code> )</label></p>
+    <p><input type="checkbox" name="playground_string"><label>Playground example attribute(
+        <code>playground_string</code> )</label></p>
     <p><em>If none checked, default configuration will be used.</em></p>
     <input type="submit" value="Authenticate" class="dButton">
 </form>
+<hr>
 <h2>Web Flow Connect</h2>
 <p>In cases where the user id is unknown upfront, a attribute can be assigned to the user as part of an authentication
     transaction. In this example the value of <strong><code>playground-string</code></strong> will be set to whatever
     value is submitted in the form below.</p>
 <form method="post" action="/authenticate/connect">
-  <p><label>playground_string: </label>
-    <input type="text" name="value"></p>
+    <p><label>playground_string: </label>
+        <input type="text" name="value"></p>
     <p>
-    <input type="submit" value="Authenticate and set value" class="dButton"></p>
+        <input type="submit" value="Authenticate and Set Attribute" class="dButton"></p>
+</form>
+<hr>
+<h2>App Initiated</h2>
+<p>The app initiated API normally starts when the user scans a static QR code in the physical world. The qr code can
+    contain a payload that is handed over to the target application.</p>
+<form method="post" action="/app-initiated/emulate">
+    <p><label>Payload: </label>
+        <input type="text" name="payload"></p>
+    <p>
+        <input type="submit" value="Emulate Scanning" class="dButton"></p>
 </form>
 {{> footer}}
