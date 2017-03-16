@@ -14,7 +14,8 @@ Copyright 2017 (C) Diglias AB
     <p><input type="checkbox" name="sn"><label>Sir Name ( <code>sn</code> )</label></p>
     <p><input type="checkbox" name="mobile"><label>Mobile phone ( <code>mobile</code> )</label></p>
     <p><input type="checkbox" name="email"><label>E-mail adress ( <code>email</code> )</label></p>
-    <p><em>If none checked, default configuratuion will be used.</em></p>
+    <p><input type="checkbox" name="playground_string"><label>Playground example attribute( <code>playground_string</code> )</label></p>
+    <p><em>If none checked, default configuration will be used.</em></p>
     <input type="submit" value="Authenticate" class="dButton">
 </form>
 <h2>Web Flow Connect</h2>
@@ -22,7 +23,7 @@ Copyright 2017 (C) Diglias AB
     transaction. In this example the value of <strong><code>playground-string</code></strong> will be set to whatever
     value is submitted in the form below.</p>
 <form method="post" action="/authenticate/connect">
-  <p><label>playground-string: </label>
+  <p><label>playground_string: </label>
     <input type="text" name="value"></p>
     <p>
     <input type="submit" value="Authenticate and set value" class="dButton"></p>

@@ -28,8 +28,8 @@ router.post('/', function (req, res, next) {
     action: 'ADD',
     attributes: [
       {
-        name: 'alias',
-        value: req.body.alias
+        name: 'playground_string',
+        value: req.body.value
       }
     ]
   };
@@ -66,10 +66,10 @@ router.post('/', function (req, res, next) {
       if (result.statusCode != 204) {
         res.render('rp-management-error', result);
       } else {
-        res.render('rp-management-success', { value: req.body.alias });
+        res.render('rp-management-success', { value: req.body.value });
       }
     }
-  )
+  );
 });
 
 module.exports = router;

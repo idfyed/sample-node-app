@@ -78,12 +78,12 @@ router.post('/connect', function (req, res, next) {
     // TODO: Switch alias to playground-string
 
     // Add the value from the form as a auth_rp_* attribute
-    // For this to work, the RP will have to be configurd as a ambassodor for the attribute.
-    params.auth_rp_alias = req.body.value;
+    // For this to work, the RP will have to be configured as a ambassador for the attribute.
+    params.auth_rp_playground_string = req.body.value;
 
     // Only show the ambassador attribute to the user, if this is omitted the user will be requested to give
-    // all attributes specified in the RP - this might seem ilogical depending on use case.
-    params.auth_attributes = 'alias';
+    // all attributes specified in the RP - this might seem illogical depending on use case.
+    params.auth_attributes = 'playground_string';
 
     // Add the timestamp required when performing a connect
     params.auth_timestamp = dateFormat(Date(), "isoUtcDateTime");
@@ -104,7 +104,7 @@ router.post('/connect', function (req, res, next) {
 
 /**
  * The Diglias server will redirect the users browser to POST to this URL
- * once the authenitcation has been sucessfullty completed.
+ * once the authentication has been successfully completed.
  */
 router.post('/success', function (req, res, next) {
 
@@ -112,7 +112,7 @@ router.post('/success', function (req, res, next) {
     if (Diglias.veirifyAuthnResponse(req.body, c.loadDigliasConf().login.mac_key)) {
         // Validate that the response is related to our request
         if (c.validateAuthRequestId(req)) {
-            // Render the content of the reponse
+            // Render the content of the response
             res.render('success', {body: _.clone(req.body)});
         } else {
             res.render('invalid-request');
