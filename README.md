@@ -1,10 +1,10 @@
 # Diglias Go node.js sample application
 
 A node.js based web application implementing a integration with the
-Diglias GO service over the EAPI protocol to authenticate users using
-the Diglias Me digital ID. Even thoug this example focuses on using the
-Diglias Me digtial ID, implementations that use altarnate ID:s such as
-Bank ID or Telia will be very similar and the example is relavant on
+Diglias GO service to authenticate users using the Diglias Me digital
+ID. Even though this example focuses on using the
+Diglias Me digtial ID, implementations that use alternate ID:s such as
+Bank ID or Telia will be very similar and the authentication example is relevant in
 those cases as well.
 
 ## Disclaimer
@@ -76,31 +76,28 @@ environment variabels. Look at the code in `src/bin/www`.
 
 ### Running the application
 
-  1. Point your browser to `https://localhost:3000`. Since the
-  application uses self signed SSL certificates you will receive a
-  warning and will have to trust the certificate.
-  1. Click the link **Authenticate**. Your browser should now get
-  redirected to the Diglias server that will render a QR code on the
-  screen.
-  1. Use your Diglias Me id to authenticate yourself to the Diglias
-  system.
+Point your browser to `https://localhost:3000`. Since the
+application uses self signed SSL certificates you will receive a
+warning and will have to trust the certificate. The sample includes
+3 main scenarios:
 
-	  1. If the Diglias Me in use is new (i.e. is missing a verified
-    personal identification number) the first authentication will fail.
-    You will be presented with a form where you are expected to submit a
-    personal identification number. 
-	  1. When the form has been submitted a new QR code will be rendered.
-    Use your Diglias 	Me to scan the code.
-	  1. Since you are adding a verified attribute to the Diglias ME you
-    will be asked to 	enter create a PIN, verify it and enter it a third
-    time.
-	  1. Confirm that the personal idenfificatiion number is correct and
-    add it to the 	Diglais ME.
-	  1. The process will start over from step 3
+#### Authenticate
 
-  1. If the authentication is successful you will be directed back to
-  the application where all the supplied user properties will be
-  rendered on a page.
+Demonstrates authentication of a user either by requesting a default
+set of attribute or by selecting a sub set of attributes to request. 
+Once the authentication has been successfully completed, it is possible
+to add a value to the users Diglias using the backend RP Management API.
+
+#### Web Flow Connect
+
+This flow shows how to add a attribute to the users Diglias profile as
+part of a normal authentication flow.
+
+#### App Initiated
+
+A sample of how to implement a App initiated flow where the users journey
+starts by scanning a static QR code and ends up with a web page rendered
+in a web view in the Diglias app.
 
 ## Running in Docker
 
@@ -136,18 +133,18 @@ HOST]:3000`. You can find out the IP of the docker host using
 
 The application in it self if a fairly straight forward web application
 based on the [Express](http://expressjs.com) web application framework.
-The [Jade](http://jade-lang.com) templating system is used to render
+The [Handlebars](http://handlebarsjs.com/) templating system is used to render
 html.
-From a Diglias integration point of view there are really three source
-files that is of interest:
+From a Diglias integration point of view there are really three parts of the
+source that is of interest:
 
 
-* `src/routes/index.js` - This is where the application specific logics
-  are implemented as a set of URL handlers that communiate with the
+* `src/routes/*` - This is where the application specific logics
+  are implemented as a set of URL handlers that communicate with the
   Diglias service trough the users browser.
 * `src/diglias-conf.json` - configuration data related to Diglias.
 * `eapi-client/` - A separate **npm** package with a module that
- implements some of the API specific logics, this package can be
+ implements some of the API specific logic's, this package can be
  extracted and reused in real world integration implementations.
 
 
@@ -172,7 +169,7 @@ application will default to use the `prodTest` environment.
 
 #### login
 
-The `login` object defines whar relying party configuration to use for
+The `login` object defines what relying party configuration to use for
 authentication of users. It contains two properties:
 
 ```json
@@ -184,19 +181,18 @@ authentication of users. It contains two properties:
 }
 ```
 
-### levelUp
+### rpManagement
 
-The `levelUp` object defines what relying party configuration to use
-when the user is missing a verified personal identification number and
-is required to "level up". It contains the same set of properties as the
-`login` object.
+The rpManagement object defines how to communicate with the RP Management
+API to set a attribute without the users involvement.
 
 ```json
 {
-  "levelUp": {
-    "auth_companyname": "playgroundAmbassador",
-    "mac_key": "5osdC7Gs6OfHdHO9ZB7DaQ=="
-  }
+    "rpManagement": {
+      "companyname": "playground",
+      "user": "playground",
+      "secret": "mIl9bYOf/mSq5DGjgACyXw=="
+    }
 }
 ```
 
@@ -204,15 +200,16 @@ is required to "level up". It contains the same set of properties as the
 
 ```json
 {
-  "endPoint": "prodTest",
-  "login": {
-    "auth_companyname": "playground",
-    "mac_key": "LW4eUhQkJfwJGgQU8JCT/g=="
-  },
-  "levelUp": {
-    "auth_companyname": "playgroundAmbassador",
-    "mac_key": "5osdC7Gs6OfHdHO9ZB7DaQ=="
-  }
+    "endPoint": "test",
+    "login": {
+        "auth_companyname": "playground",
+        "mac_key": "PNKVwU4S+TLvMm2QwTVMkQ=="
+    },
+    "rpManagement": {
+      "companyname": "playground",
+      "user": "playground",
+      "secret": "mIl9bYOf/mSq5DGjgACyXw=="
+    }
 }
 ```
 
