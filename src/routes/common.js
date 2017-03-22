@@ -21,7 +21,7 @@ module.exports.buildEndpointUrl = function(req, endpoint) {
     }
 
     return prot.concat("://", req.headers.host, "/", endpoint);
-}
+};
 
 /**
  * Loads configuration data from a JSON file
@@ -38,7 +38,7 @@ module.exports.loadDigliasConf = function() {
     }
 
     return conf;
-}
+};
 
 /**
  * Checks that a the request Id from the request is the same
@@ -47,4 +47,4 @@ module.exports.loadDigliasConf = function() {
 
 module.exports.validateAuthRequestId = function(req) {
     return req.session.requestId === req.body.auth_inresponseto;
-}
+};
