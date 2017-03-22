@@ -41,14 +41,10 @@ module.exports.loadDigliasConf = function() {
 }
 
 /**
- * Checks that a cookie set has the same content as the
- * resonponse code.
+ * Checks that a the request Id from the request is the same
+ * as the one stored in the session.
  */
 
-function validateRequestId(req, cookie) {
-    return req.cookies[cookie] == req.body.auth_inresponseto;
-}
-
 module.exports.validateAuthRequestId = function(req) {
-    return validateRequestId(req, 'authRequestId');
+    return req.session.requestId === req.body.auth_inresponseto;
 }

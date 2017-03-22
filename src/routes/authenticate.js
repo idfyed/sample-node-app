@@ -51,10 +51,10 @@ router.post('/', function (req, res, next) {
     params.auth_cancellink = c.buildEndpointUrl(req, "authenticate/cancel");
     params.auth_rejectlink = c.buildEndpointUrl(req, "authenticate/reject");
 
-    // Generate a random request id and store it in a cookie to be able
+    // Generate a random request id and store it in the session to be able
     // to validate the response.
     params.auth_requestid = randomString.generate(16);
-    res.cookie('authRequestId', params.auth_requestid);
+    req.session.requestId = params.auth_requestid;
 
     // Build the URL and redirect the users browser to it.
     res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
@@ -75,8 +75,6 @@ router.post('/connect', function (req, res, next) {
 
     params.auth_companyname = conf.login.auth_companyname;
 
-    // TODO: Switch alias to playground-string
-
     // Add the value from the form as a auth_rp_* attribute
     // For this to work, the RP will have to be configured as a ambassador for the attribute.
     params.auth_rp_playground_string = req.body.value;
@@ -93,10 +91,10 @@ router.post('/connect', function (req, res, next) {
     params.auth_cancellink = c.buildEndpointUrl(req, "authenticate/cancel");
     params.auth_rejectlink = c.buildEndpointUrl(req, "authenticate/reject");
 
-    // Generate a random request id and store it in a cookie to be able
+    // Generate a random request id and store it in the sessione to be able
     // to validate the response.
     params.auth_requestid = randomString.generate(16);
-    res.cookie('authRequestId', params.auth_requestid);
+    req.session.requestId = params.auth_requestid;
 
     // Build the URL and redirect the users browser to it.
     res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
