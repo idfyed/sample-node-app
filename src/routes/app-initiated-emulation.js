@@ -55,18 +55,12 @@ router.post('/emulate', function (req, res, next) {
  */
 
 router.post('/transform', function(req, res, next){
-    console.log('transform');
-
     // Add a timestamp to the response, it would in the response from the Diglias Go service
     // as part of a app-initiated flow.
     req.body.auth_timestamp = dateFormat(Date(), "isoUtcDateTime");
 
-    console.log(req.body.mac);
-
     // Since we add a auth_* parameter , we need to compute a new MAC.
     req.body.mac = Diglias.computeMac(req.body,c.loadDigliasConf().login.mac_key);
-
-    console.log(req.body.mac);
 
     // Transform the POST body to a string of parameters suitable for a GET request
     var urlParams = '';
