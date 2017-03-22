@@ -219,6 +219,6 @@ Any questions, or feedback on the code or Diglias in general?
 
 jonas@diglias.com
 
-Copyright (c) 2016 Diglias AB
+Copyright (c) 2017 Diglias AB
 
 Author: Jonas

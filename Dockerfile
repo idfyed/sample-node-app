@@ -1,5 +1,5 @@
 #
-# Copyright 2016 (C) Diglias AB
+# Copyright 2017 (C) Diglias AB
 #
 # @author jonas
 # 
