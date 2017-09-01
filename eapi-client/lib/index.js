@@ -48,7 +48,7 @@ module.exports = {
     // Compute the mac and add it to the map
     parameters.mac = computeMac(parameters, macKey);
 
-    // Concatenate all parameters into a string sutiable as a get
+    // Url encode parameter values and concatenate them into a string suitable as a get
     // request query string
     var keys = Object.keys(parameters);
 
@@ -58,7 +58,7 @@ module.exports = {
       if (paramString.length > 0) {
         paramString = paramString.concat('&');
       }
-      paramString = paramString.concat(key.concat('=').concat(parameters[key]));
+      paramString = paramString.concat(key.concat('=').concat(encodeURIComponent(parameters[key])));
     });
 
     var envEndpoints = {
