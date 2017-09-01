@@ -24,10 +24,10 @@ module.exports = {
    *      "prod" - for the live production system.
    *      "test" -  for testing purposes during integration
    *      "prodTest" - for evaluation purposes in conduction with the prod test diglias app
+   *  macKey: The key te be used to compute the mac
    *  parameters: A object containing all parameter values and the key to be used when
    *      computing the mac. The parameters should be stored as properties named according
-   *      to the API specification. The mac key should be stored as a property called mac_key.
-   *
+   *      to the API specification.
    */
   buildAuthnRequestUrl: function (endpoint, macKey, parameters) {
     // Verify that all mandatory parameters are included
