@@ -36,7 +36,7 @@ router.post('/', function (req, res, next) {
         action: 'ADD',
         attributes: [
             {
-                name: 'playground_string',
+                name: 'acme_loyaltyNumber',
                 value: req.body.value
             }
         ]
@@ -56,7 +56,7 @@ router.post('/', function (req, res, next) {
     };
 
     //
-    // Validate that the configuration conatins a valid endpoint.
+    // Validate that the configuration contains a valid endpoint.
 
     if (typeof envEndpoints[conf.endPoint] === 'undefined') {
         throw new Error('Invalid endpoint value: ' + endpoint);

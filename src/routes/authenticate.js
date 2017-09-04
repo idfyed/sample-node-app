@@ -77,11 +77,11 @@ router.post('/connect', function (req, res, next) {
 
     // Add the value from the form as a auth_rp_* attribute
     // For this to work, the RP will have to be configured as a ambassador for the attribute.
-    params.auth_rp_playground_string = req.body.value;
+    params.auth_rp_acme_loyaltyNumber = req.body.value;
 
     // Only show the ambassador attribute to the user, if this is omitted the user will be requested to give
     // all attributes specified in the RP - this might seem illogical depending on use case.
-    params.auth_attributes = 'playground_string';
+    params.auth_attributes = 'acme_loyaltyNumber';
 
     // Add the timestamp required when performing a connect
     params.auth_timestamp = dateFormat(Date(), "isoUtcDateTime");
