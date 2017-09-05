@@ -53,7 +53,7 @@ module.exports = router;
 
 /**
  * Keeps track of request id that have been used, for the sake of the sample implemented
- * as a in memory array. In a real world scenrio should probably be implemented in a way that the
+ * as a in memory array. In a real world scenario it should probably be implemented in a way that the
  * id:s are persisted between server restarts and cleaned up in a structured manner.
  *
  * @param id

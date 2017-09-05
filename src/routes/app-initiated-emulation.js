@@ -50,7 +50,7 @@ router.post('/emulate', function (req, res, next) {
 });
 
 /**
- * Recieves the authnResponse from the Dilgias GO service and transforms it to
+ * Receives the authnResponse from the Dilgias GO service and transforms it to
  * a request that normally would be sent to the application in the app-initiated flow.
  */
 
@@ -78,8 +78,8 @@ router.post('/transform', function(req, res, next){
         }
     });
 
-    // Redirect to the entrypoint - this GET request would normally originate from
-    // a web view in the Diglias app to the webb application.
+    // Redirect to the entry point - this GET request would normally originate from
+    // a web view in the Diglias app to the web application.
     res.redirect('entrypoint?'.concat(urlParams));
 });
 
