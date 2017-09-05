@@ -34,8 +34,7 @@ installed and available on the path.
 
 ## Installation
 
-Clone the repository in your preferred location. Change to the root
-directory of the cloned repository and issue  the following commands:
+Change to the root directory of the project and issue the following commands:
 
 ### Build the sub package `Diglias EAPI Client`
 
@@ -46,7 +45,7 @@ $ npm pack
 $ cd ..
 ```
 
-### Install main packe node dependencies
+### Install main package node dependencies
 
 ```
 $ npm install
@@ -69,7 +68,7 @@ hostname the certificates can be regenerated.
 
 ### Starting the server
 
-In the root of the repository issue the command `npm start`. This will
+In the root of the project issue the command `npm start`. This will
 start node.js running a web server on port 3000 by default. The port
 number and some other runtime attributes can be managed trough
 environment variabels. Look at the code in `src/bin/www`.
@@ -109,7 +108,7 @@ host.
 ### Build the Image using docker
 
 Issue the command `docker build -t diglias-sample-app .` in the root
-directory of the repository. This will build a image in your docker host
+directory of the project. This will build a image in your docker host
 named `diglias-sample-app`.
 
 ### Run the Image
@@ -151,67 +150,8 @@ source that is of interest:
 ### Configuration file
 
 The file `src/diglias-conf.json` contains configuration data related to
-the integration with Diglias the Diglias Go service, there are three
+the integration with the Diglias Go service, there are three
 main sections of informaton:
-
-#### endPoint
-
-The `endPoint` configures what environment to use, possible values are
-`prod`,`prodTest` and `test`. The value is optional and if omitted the
-application will default to use the `prodTest` environment.
-
-
-```json
-{
-  "endPoint": "prodTest"
-}
-```
-
-#### login
-
-The `login` object defines what relying party configuration to use for
-authentication of users. It contains two properties:
-
-```json
-{
-  "login": {
-    "auth_companyname": "playground",
-    "mac_key": "LW4eUhQkJfwJGgQU8JCT/g=="
-  }
-}
-```
-
-### rpManagement
-
-The rpManagement object defines how to communicate with the RP Management
-API to set a attribute without the users involvement.
-
-```json
-{
-    "rpManagement": {
-      "companyname": "playground",
-      "user": "playground",
-      "secret": "mIl9bYOf/mSq5DGjgACyXw=="
-    }
-}
-```
-
-#### Example configuration file
-
-```json
-{
-    "endPoint": "test",
-    "login": {
-        "auth_companyname": "playground",
-        "mac_key": "PNKVwU4S+TLvMm2QwTVMkQ=="
-    },
-    "rpManagement": {
-      "companyname": "playground",
-      "user": "playground",
-      "secret": "mIl9bYOf/mSq5DGjgACyXw=="
-    }
-}
-```
 
 ## Contact and Feedback
 
