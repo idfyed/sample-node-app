@@ -73,6 +73,9 @@ start node.js running a web server on port 3000 by default. The port
 number and some other runtime attributes can be managed trough
 environment variabels. Look at the code in `src/bin/www`.
 
+For security reasons the relying party configuration used in the code
+will only accept requests originating from `http(s)://localhost*`.
+
 ### Running the application
 
 Point your browser to `https://localhost:3000`. Since the
@@ -121,12 +124,10 @@ the docker host.
 ### Build and Run with Docker Compose
 
 If you have `docker-compose` available you can build and run in one
-command. Chnage to the root of the repository and issue
+command. Change to the root of the repository and issue
 `docker-compose up`.
 
-To access the application point your browser to `https://[IP OF DOCKER 
-HOST]:3000`. You can find out the IP of the docker host using
-`docker-machine ip`.
+To access the application point your browser to `https://localhost:3000`.
 
 ## Application structure
 
