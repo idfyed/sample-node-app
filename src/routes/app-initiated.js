@@ -33,8 +33,8 @@ router.get('/entrypoint', function (req, res, next) {
     }
 
     // Check that the timestamp is reasonably fresh - of not a replay attack might be suspected,
-    // allow it to be max 1000 msec old.
-    if (new Date().getTime() - dateParse(req.query.auth_timestamp).getTime() > 1000) {
+    // allow it to be max 2000 msec old.
+    if (new Date().getTime() - dateParse(req.query.auth_timestamp).getTime() > 2000) {
         res.render('to-old-timestamp');
         return;
     }
