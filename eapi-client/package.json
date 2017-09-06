@@ -17,19 +17,19 @@
     "authentication"
   ],
   "devDependencies": {
-    "chai": "^3.5.0",
-    "del": "^2.2.2",
-    "eslint": "^3.1.1",
-    "eslint-config-xo-space": "^0.15.0",
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^3.0.1",
-    "gulp-exclude-gitignore": "^1.0.0",
-    "gulp-istanbul": "^1.0.0",
+    "chai": "^4.1.2",
+    "del": "^3.0.0",
+    "eslint": "^4.6.1",
+    "eslint-config-xo-space": "^0.16.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^4.0.0",
+    "gulp-exclude-gitignore": "^1.2.0",
+    "gulp-istanbul": "^1.1.2",
     "gulp-line-ending-corrector": "^1.0.1",
-    "gulp-mocha": "^3.0.1",
-    "gulp-nsp": "^2.1.0",
-    "gulp-plumber": "^1.0.0",
-    "sinon": "^1.17.6"
+    "gulp-mocha": "^4.3.1",
+    "gulp-nsp": "^2.4.2",
+    "gulp-plumber": "^1.1.0",
+    "sinon": "^3.2.1"
   },
   "eslintConfig": {
     "extends": "xo-space",
@@ -44,6 +44,6 @@
   },
   "private": true,
   "dependencies": {
-    "jshashes": "^1.0.5"
+    "jshashes": "^1.0.7"
   }
 }

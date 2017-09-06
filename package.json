@@ -12,7 +12,7 @@
     "body-parser": "^1.13.3",
     "date-parse": "^0.2.0",
     "dateformat": "^2.0.0",
-    "debug": "^2.2.0",
+    "debug": "^3.0.1",
     "diglias-eapi-client": "./eapi-client/diglias-eapi-client-0.1.0.tgz",
     "express": "^4.13.4",
     "express-session": "^1.15.1",
