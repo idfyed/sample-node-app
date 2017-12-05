@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 (C) Diglias AB
+ * Copyright 2017 (C) Diglias AB
  *
  * @author jonas
  *
@@ -26,17 +26,17 @@ module.exports = {
   requestData: {
     /* eslint-disable */
     auth_companyname: 'playground',
-    mac_key: 'LW4eUhQkJfwJGgQU8JCT/g==',
     auth_returnlink: 'https://localhost:3000/authenticate/success',
     auth_cancellink: 'https://localhost:3000/authenticate/cancel',
     auth_rejectlink: 'https://localhost:3000/authenticate/reject',
-    auth_requestid: 'xxxxxxxxxxxxxxxx'
+    auth_requestid: 'xxxxxxxxxxxxxxxx',
+    auth_timestamp: '2017-01-01T18:00:00+00:00'
     /* eslint-enable */
   },
 
-  requestMAC: '2AE3ACA4F918DD2ED0A562CA74031B5C',
+  requestMAC: 'D715C8DD03AB5118ECAD9F83C995FE6E',
 
-  prodRequestURL: 'https://login.diglias.com/main-eapi/begin?auth_companyname=playground&mac_key=LW4eUhQkJfwJGgQU8JCT/g==&auth_returnlink=https://localhost:3000/authenticate/success&auth_cancellink=https://localhost:3000/authenticate/cancel&auth_rejectlink=https://localhost:3000/authenticate/reject&auth_requestid=xxxxxxxxxxxxxxxx&mac=2AE3ACA4F918DD2ED0A562CA74031B5C',
+  prodRequestURL: 'https://login.diglias.com/main-eapi/begin?auth_companyname=playground&auth_returnlink=https%3A%2F%2Flocalhost%3A3000%2Fauthenticate%2Fsuccess&auth_cancellink=https%3A%2F%2Flocalhost%3A3000%2Fauthenticate%2Fcancel&auth_rejectlink=https%3A%2F%2Flocalhost%3A3000%2Fauthenticate%2Freject&auth_requestid=xxxxxxxxxxxxxxxx&auth_timestamp=2017-01-01T18%3A00%3A00%2B00%3A00&mac=D715C8DD03AB5118ECAD9F83C995FE6E',
 
   invalidRequestData: {
     /* eslint-disable */

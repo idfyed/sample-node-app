@@ -1,0 +1,41 @@
+{{!
+Copyright 2017 (C) Diglias AB
+@author jonas
+}}
+{{> header}}
+<h1>Diglias GO Sample Application</h1>
+<h2>Authenticate</h2>
+<p>When authenticating users a set of attributes will be requested from the user trough the Diglias app. By default
+    the set of attributes requested is defined in the configuration. Using EAPI it is possible to limit the requested
+    attributes to a subset of the configured attributes.</p>
+<form method="post" action="/authenticate/">
+    <h3>Select attributes to request</h3>
+    <p><input type="checkbox" name="nickname"><label>Nickname ( <code>nickname</code> )</label></p>
+    <p><input type="checkbox" name="c"><label>Country ( <code>c</code> )</label></p>
+    <p><input type="checkbox" name="acme_loyaltyNumber"><label>Acme Loyalty Number (
+        <code>acme_loyaltyNumber</code> )</label></p>
+    <p><em>If none checked, default configuration will be used.</em></p>
+    <input type="submit" value="Authenticate" class="dButton">
+</form>
+<hr>
+<h2>Web Flow Connect</h2>
+<p>In cases where the user id is unknown upfront, an attribute can be assigned to the user as part of a authentication
+    transaction. In this example the value of <strong><code>acme_loyaltyNumber</code></strong> will be set to whatever
+    value is submitted in the form below.</p>
+<form method="post" action="/authenticate/connect/">
+    <p><label>acme_loyaltyNumber: </label>
+        <input type="text" name="value"></p>
+    <p>
+        <input type="submit" value="Authenticate and Set Attribute" class="dButton"></p>
+</form>
+<hr>
+<h2>App Initiated</h2>
+<p>The app initiated API normally starts when the user scans a static QR code in the physical world. The qr code can
+    contain a payload that is handed over to the target application.</p>
+<form method="post" action="/app-initiated/emulate/">
+    <p><label>Payload: </label>
+        <input type="text" name="payload"></p>
+    <p>
+        <input type="submit" value="Emulate Scanning" class="dButton"></p>
+</form>
+{{> footer}}

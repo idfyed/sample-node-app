@@ -1,0 +1,27 @@
+{{!
+Copyright 2017 (C) Diglias AB
+@author jonas
+}}
+{{> header}}
+{{> nav}}
+<h1>Success</h1>
+<p>Authenticaton sucessful, the following data was received from the Diglias GO service.</p>
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+    </tr>
+    {{#each body}}
+        <tr>
+            <td>{{@key}}</td>
+            <td>{{this}}</td>
+        </tr>
+    {{/each}}
+</table>
+<h2>Back End Connect</h2>
+<p>The diglias user id of the user is now known and it is possible to add data to the Diglias profile of the user trough the RP Management API.</p>
+<form method="post" action="/rp-management/">
+<input type="hidden" name="userid" value="{{body.auth_userid}}">
+<p><label>acme_loyaltyNumber: </label><input type="text" name="value"></p>
+<p><input type="submit" value="Add to profile" class="dButton"></p>
+{{> footer}}

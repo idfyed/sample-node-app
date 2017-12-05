@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 (C) Diglias AB
+ * Copyright 2017 (C) Diglias AB
  *
  * @author jonas
  *
@@ -44,6 +44,12 @@ describe('module-interface', function () {
       }
 
       assert(spy.threw());
+    });
+  });
+
+  describe('#computeMac', function () {
+    it('should be exported', function () {
+      assert(typeof EAPI.computeMac === 'function');
     });
   });
 });

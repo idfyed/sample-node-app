@@ -1,8 +1,35 @@
 body {
-  padding: 50px;
-  font: 14px "Effra", Helvetica, Arial, sans-serif;
+    padding: 20px;
+    font: 15px "Effra", Helvetica, Arial, sans-serif;
+    margin: 0 auto;
+    max-width: 600px;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
 }
+
+.dButton {
+    background-color: #56ad71;
+    color: white;
+
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+
+    border-width: 1px;
+
+    display:inline-block;
+
+    cursor:pointer;
+
+    font-size:14px;
+    font-weight:550;
+    padding:7px 10px;
+    text-decoration: none;
+}
+
+.dButton:active {
+    background-color: #006a4b;
+}
+

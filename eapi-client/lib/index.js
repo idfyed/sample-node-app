@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 (C) Diglias AB
+ * Copyright 2017 (C) Diglias AB
  *
  * @author jonas
  *
@@ -24,10 +24,10 @@ module.exports = {
    *      "prod" - for the live production system.
    *      "test" -  for testing purposes during integration
    *      "prodTest" - for evaluation purposes in conduction with the prod test diglias app
+   *  macKey: The key te be used to compute the mac
    *  parameters: A object containing all parameter values and the key to be used when
    *      computing the mac. The parameters should be stored as properties named according
-   *      to the API specification. The mac key should be stored as a property called mac_key.
-   *
+   *      to the API specification.
    */
   buildAuthnRequestUrl: function (endpoint, macKey, parameters) {
     // Verify that all mandatory parameters are included
@@ -48,7 +48,7 @@ module.exports = {
     // Compute the mac and add it to the map
     parameters.mac = computeMac(parameters, macKey);
 
-    // Concatenate all parameters into a string sutiable as a get
+    // Url encode parameter values and concatenate them into a string suitable as a get
     // request query string
     var keys = Object.keys(parameters);
 
@@ -58,7 +58,7 @@ module.exports = {
       if (paramString.length > 0) {
         paramString = paramString.concat('&');
       }
-      paramString = paramString.concat(key.concat('=').concat(parameters[key]));
+      paramString = paramString.concat(key.concat('=').concat(encodeURIComponent(parameters[key])));
     });
 
     var envEndpoints = {
@@ -86,6 +86,12 @@ module.exports = {
 
   veirifyAuthnResponse: function (responseBody, macKey) {
     return computeMac(responseBody, macKey) === responseBody.mac;
-  }
+  },
+
+  /**
+   * Re-export the computeMac function.
+   */
+  computeMac: computeMac
+
 };
 
