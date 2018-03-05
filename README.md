@@ -70,7 +70,7 @@ hostname the certificates can be regenerated.
 
 In the root of the project issue the command `npm start`. This will
 start node.js running a web server on port 3000 by default. The port
-number and some other runtime attributes can be managed trough
+number and some other runtime attributes can be managed through
 environment variabels. Look at the code in `src/bin/www`.
 
 For security reasons the relying party configuration used in the code
@@ -92,7 +92,7 @@ to add a value to the user's Diglias using the backend RP Management API.
 
 #### Web Flow Connect
 
-This flow shows how to add a attribute to the users Diglias profile as
+This flow shows how to add an attribute to the users Diglias profile as
 part of a normal authentication flow.
 
 #### App Initiated
