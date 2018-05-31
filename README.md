@@ -21,7 +21,7 @@ system to authorize the user in the application context.
 Since the application is pure javascript it should be possible to run on
 any platform where node.js exists. It has been developed and tested on
 Mac OSX. If you need to regenerate the server certificates used for SSL/TLS,
-the script supplied is depending on bash and openssl, in that case a 
+the script supplied is depending on bash and openssl, in that case a
 un*x flavor of some sort is probably the most natural choice.
 
 ## Dependencies
@@ -60,9 +60,9 @@ The distribution includes self signed certificates for the hostname
 `localhost`. If the application is to be launched under a different
 hostname the certificates can be regenerated.
 
-1. Make `src/bin/certs` the current directory
-1. Run the command `bash make-certs.sh [hostname]` where `hostname` is
-   the new hostname to issue certificates for.
+1.  Make `src/bin/certs` the current directory
+1.  Run the command `bash make-certs.sh [hostname]` where `hostname` is
+    the new hostname to issue certificates for.
 
 ## Usage
 
@@ -86,20 +86,21 @@ warning and will have to trust the certificate. The sample includes
 #### Authenticate
 
 Demonstrates authentication of a user either by requesting a default
-set of attribute or by selecting a subset. 
+set of attribute or by selecting a subset.
 Once the authentication has been successfully completed, it is possible
 to add a value to the user's Diglias using the backend RP Management API.
 
 #### Web Flow Connect
 
-This flow shows how to add an attribute to the users Diglias profile as
+This flow shows how to add an attribute to the user's Diglias profile as
 part of a normal authentication flow.
 
 #### App Initiated
 
-A sample of how to implement App initiated flow where the users journey
-starts by scanning a static QR code and ends up authenticated with a 
-web page rendered in a web view in the Diglias app.
+A sample of how to implement App initiated flow where the user's journey
+starts by scanning a static QR code and ends up authenticated with a
+web page rendered in the user's web browser or web view in the Diglias
+app.
 
 ## Running in Docker
 
@@ -138,15 +139,13 @@ html.
 From a Diglias integration point of view there are really three parts of the
 source that is of interest:
 
-
 * `src/routes/*` - This is where the application specific logics
   are implemented as a set of URL handlers that communicate with the
-  Diglias service trough the users browser.
+  Diglias service trough the user's browser.
 * `src/diglias-conf.json` - configuration related to Diglias.
 * `eapi-client/` - A separate **npm** package with a module that
- implements some of the API specific logic's, this package can be
- extracted and reused in real world integration implementations.
-
+  implements some of the API specific logic's, this package can be
+  extracted and reused in real world integration implementations.
 
 ### Configuration file
 
