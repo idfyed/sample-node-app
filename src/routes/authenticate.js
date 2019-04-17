@@ -1,5 +1,5 @@
 /**
- * Copyright 2017 (C) Diglias AB
+ * Copyright 2019 (C) IDFyed Solutions AB
  *
  * Routes for the normal authentication flow and web flow connect
  *
@@ -18,8 +18,8 @@ var _ = require('lodash');
 var c = require('./common');
 
 /**
- * Prepare a message to the Diglias server and redirect the users
- * browser to Diglias to ask the user to authenticate.
+ * Prepare a message to the IDFyed server and redirect the users
+ * browser to IDFyed to ask the user to authenticate.
  */
 
 router.post('/', function (req, res, next) {
@@ -61,9 +61,9 @@ router.post('/', function (req, res, next) {
 });
 
 /**
- * Prepare a message to the Diglias server and redirect the users
- * browser to Diglias to ask the user to have a attribute added to
- * their Diglias.
+ * Prepare a message to the IDFyed server and redirect the users
+ * browser to IDFyed to ask the user to have a attribute added to
+ * their IDFyed.
  */
 
 router.post('/connect', function (req, res, next) {
@@ -101,7 +101,7 @@ router.post('/connect', function (req, res, next) {
 });
 
 /**
- * The Diglias server will redirect the users browser to POST to this URL
+ * The IDFyed server will redirect the users browser to POST to this URL
  * once the authentication has been successfully completed.
  */
 router.post('/success', function (req, res, next) {
@@ -121,7 +121,7 @@ router.post('/success', function (req, res, next) {
 });
 
 /**
- * The Diglias server will redirect the users browser this URL
+ * The IDFyed server will redirect the users browser this URL
  * if the user cancels the authentication.
  */
 
@@ -130,7 +130,7 @@ router.get('/cancel', function (req, res, next) {
 });
 
 /**
- * The Diglias server will redirect the users browser this URL
+ * The IDFyed server will redirect the users browser this URL
  * if the authentication gets rejected by the Diglais server.
  */
 

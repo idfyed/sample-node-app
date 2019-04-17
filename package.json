@@ -1,9 +1,9 @@
 {
-  "name": "diglias-sample-node-app",
+  "name": "idfyed-sample-node-app",
   "version": "0.1.0",
-  "description": "node.js sample application implementing the client side of the Diglias EAPI authentication protocol",
+  "description": "node.js sample application implementing the client side of the IDFyed EAPI authentication protocol",
   "private": true,
-  "homepage": "https://diglias.com",
+  "homepage": "https://diglias.idfyed.com",
   "scripts": {
     "start": "node ./src/bin/www",
     "clean": "rm -rf ./node_modules"

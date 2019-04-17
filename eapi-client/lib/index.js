@@ -1,12 +1,12 @@
 /**
- * Copyright 2017 (C) Diglias AB
+ * Copyright 2019 (C) IDFyed Solutions AB
  *
  * @author jonas
  *
  * Helper functions to support implementation of the client side of the EAPI
  * authentication protocol.
  *
- * Please read more at: https://test.diglias.com/doc-rp/eapi.jsp
+ * Please read more at: https://test.idfyed.com/doc-rp/eapi.jsp
  *
  */
 'use strict';
@@ -20,10 +20,10 @@ module.exports = {
    * to to initiate a authentication transaction.
    *
    * Parameters:
-   *  endpoint: What Diglias environment to call, can be one of:
+   *  endpoint: What IDFyed environment to call, can be one of:
    *      "prod" - for the live production system.
    *      "test" -  for testing purposes during integration
-   *      "prodTest" - for evaluation purposes in conduction with the prod test diglias app
+   *      "prodTest" - for evaluation purposes in conduction with the prod test idfyed app
    *  macKey: The key te be used to compute the mac
    *  parameters: A object containing all parameter values and the key to be used when
    *      computing the mac. The parameters should be stored as properties named according
@@ -62,10 +62,10 @@ module.exports = {
     });
 
     var envEndpoints = {
-      build: 'https://build.diglias.com/main-eapi/begin',
-      prod: 'https://login.diglias.com/main-eapi/begin',
-      prodTest: 'https://prodtest-login.diglias.com/main-eapi/begin',
-      test: 'https://test.diglias.com/main-eapi/begin'
+      build: 'https://build.idfyed.com/main-eapi/begin',
+      prod: 'https://login.idfyed.com/main-eapi/begin',
+      prodTest: 'https://prodtest-login.idfyed.com/main-eapi/begin',
+      test: 'https://test.idfyed.com/main-eapi/begin'
     };
 
     //
@@ -80,7 +80,7 @@ module.exports = {
   },
 
   /**
-   * Validates the response from the Diglias server by computing a mac and
+   * Validates the response from the IDFyed server by computing a mac and
    * comparing it with the enclosed one.
    */
 
@@ -94,4 +94,3 @@ module.exports = {
   computeMac: computeMac
 
 };
-

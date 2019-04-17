@@ -1,5 +1,5 @@
 # eapi-client [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Module to aid in the implementation of Diglias EAPI integrations.
+> Module to aid in the implementation of IDFyed EAPI integrations.
 
 ## Installation
 
@@ -16,7 +16,7 @@ eapiClient('Rainbow');
 ```
 ## License
 
- © [Diglias AB](https://diglias.com)
+ © [IDFyed AB](https://diglias.idfyed.com)
 
 
 [npm-image]: https://badge.fury.io/js/eapi-client.svg

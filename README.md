@@ -1,19 +1,19 @@
-# Diglias Go node.js sample application
+# IDFyed Go node.js sample application
 
 A node.js based web application implementing an integration with the
-Diglias GO service to authenticate users using the Diglias Me digital
+IDFyed GO service to authenticate users using the IDFyed Me digital
 ID. Even though this example focuses on using the
-Diglias Me Digtial ID, implementations that use alternate ID:s such as
+IDFyed Me Digtial ID, implementations that use alternate ID:s such as
 Bank ID or Telia will be very similar and the authentication example is relevant in
 those cases as well.
 
 ## Disclaimer
 
 This is by no means a fully-fledged web application, it is only a
-example on how to communicate with the Diglias Go service to
+example on how to communicate with the IDFyed Go service to
 authenticate a user and retrieve user attributes. The application does
 not implement authorization at all. In a real world scenario the
-implementer would have to use the information retrieved from the Diglias
+implementer would have to use the information retrieved from the IDFyed
 system to authorize the user in the application context.
 
 ## Compatibility
@@ -36,7 +36,7 @@ installed and available in the path.
 
 Issue the following commands in the project directory:
 
-### Build the sub package `Diglias EAPI Client`
+### Build the sub package `IDFyed EAPI Client`
 
 ```
 $ cd eapi-client
@@ -88,18 +88,18 @@ warning and will have to trust the certificate. The sample includes
 Demonstrates authentication of a user either by requesting a default
 set of attribute or by selecting a subset.
 Once the authentication has been successfully completed, it is possible
-to add a value to the user's Diglias using the backend RP Management API.
+to add a value to the user's IDFyed using the backend RP Management API.
 
 #### Web Flow Connect
 
-This flow shows how to add an attribute to the user's Diglias profile as
+This flow shows how to add an attribute to the user's IDFyed profile as
 part of a normal authentication flow.
 
 #### App Initiated
 
 A sample of how to implement App initiated flow where the user's journey
 starts by scanning a static QR code and ends up authenticated with a
-web page rendered in the user's web browser or web view in the Diglias
+web page rendered in the user's web browser or web view in the IDFyed
 app.
 
 ## Running in Docker
@@ -136,13 +136,13 @@ The application in it self if a fairly straight forward web application
 based on the [Express](http://expressjs.com) web application framework.
 The [Handlebars](http://handlebarsjs.com/) templating system is used to render
 html.
-From a Diglias integration point of view there are really three parts of the
+From a IDFyed integration point of view there are really three parts of the
 source that is of interest:
 
 * `src/routes/*` - This is where the application specific logics
   are implemented as a set of URL handlers that communicate with the
-  Diglias service trough the user's browser.
-* `src/diglias-conf.json` - configuration related to Diglias.
+  IDFyed service trough the user's browser.
+* `src/diglias-conf.json` - configuration related to IDFyed.
 * `eapi-client/` - A separate **npm** package with a module that
   implements some of the API specific logic's, this package can be
   extracted and reused in real world integration implementations.
@@ -150,13 +150,13 @@ source that is of interest:
 ### Configuration file
 
 The file `src/diglias-conf.json` contains configuration data related to
-the integration with the Diglias Go service, there are three
+the integration with the IDFyed Go service, there are three
 main sections of informaton:
 
 ## Contact and Feedback
 
-Any questions, or feedback on the code or Diglias in general?
+Any questions, or feedback on the code or IDFyed in general?
 
-playground@diglias.com
+playground@idfyed.com
 
-Copyright (c) 2018 Diglias AB
+Copyright (c) 2019 IDFyed Solutions AB
