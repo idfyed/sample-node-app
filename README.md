@@ -71,7 +71,7 @@ hostname the certificates can be regenerated.
 In the root of the project issue the command `npm start`. This will
 start node.js running a web server on port 3000 by default. The port
 number and some other runtime attributes can be managed through
-environment variabels. Look at the code in `src/bin/www`.
+environment variables. Look at the code in `src/bin/www`.
 
 For security reasons the relying party configuration used in the code
 will only accept requests originating from `http(s)://localhost*`.
@@ -141,7 +141,7 @@ source that is of interest:
 
 * `src/routes/*` - This is where the application specific logics
   are implemented as a set of URL handlers that communicate with the
-  IDFyed service trough the user's browser.
+  IDFyed service through the user's browser.
 * `src/idfyed-conf.json` - configuration related to IDFyed.
 * `eapi-client/` - A separate **npm** package with a module that
   implements some of the API specific logic's, this package can be

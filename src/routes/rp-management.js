@@ -1,7 +1,7 @@
 /**
  * Copyright 2019 (C) IDFyed Solutions AB
  *
- * Routes for backend connect trough the RP Management API.
+ * Routes for backend connect through the RP Management API.
  *
  * @author jonas
  *
@@ -22,7 +22,7 @@ var envEndpoints = {
 };
 
 /**
- * Call the IDFyed service trough a backend channel and add a attribute
+ * Call the IDFyed service through a backend channel and add a attribute
  * to the IDFyed users profile.
  */
 
