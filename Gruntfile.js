@@ -58,7 +58,7 @@ module.exports = function (grunt) {
                             'package.json',
                             'README.md'
                         ],
-                        dest: 'diglias-node-sample-app/'
+                        dest: 'idfyed-node-sample-app/'
                     },
 
                 ],
@@ -68,20 +68,20 @@ module.exports = function (grunt) {
         compress: {
             zip: {
                 options: {
-                    archive: 'diglias-node-sample-app.zip'
+                    archive: 'idfyed-node-sample-app.zip'
                 },
                 files: [
-                    { src: ['diglias-node-sample-app/**'], dest: '/' },
+                    { src: ['idfyed--node-sample-app/**'], dest: '/' },
                 ]
             }
         },
 
         clean: {
-            zip: ['diglias-node-sample-app'],
+            zip: ['idfyed-node-sample-app'],
             all: [
                 'node_modules',
                 'eapi-client/node_modules',
-                'diglias-node-sample-app.zip'
+                'idfyed-node-sample-app.zip'
                 ],
         },
 

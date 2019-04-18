@@ -5,7 +5,7 @@
 #
 #
 FROM crusaider/baseimage-node:0.1.0
-MAINTAINER Jonas jonas@diglias.com
+MAINTAINER Jonas jonas@idfyed.com
 
 # Install app dependencies
 COPY eapi-client /app/eapi-client/.

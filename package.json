@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "node.js sample application implementing the client side of the IDFyed EAPI authentication protocol",
   "private": true,
-  "homepage": "https://diglias.idfyed.com",
+  "homepage": "https://idfyed.com",
   "scripts": {
     "start": "node ./src/bin/www",
     "clean": "rm -rf ./node_modules"

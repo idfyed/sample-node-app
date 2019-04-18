@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // The default config will use a in memory store, this is
 // probably not a god idea in a real world production scenario.
 app.use(session({
-    secret: 'diglias-rules',
+    secret: 'idfyed-rules',
     resave: false,
     saveUninitialized: true
 }));

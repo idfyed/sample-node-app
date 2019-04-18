@@ -2,11 +2,11 @@
   "name": "idfyed-eapi-client",
   "version": "0.1.0",
   "description": "Module to aid in the implementation of IDFyed EAPI integrations.",
-  "homepage": "https://diglias.idfyed.com",
+  "homepage": "https://idfyed.com",
   "author": {
     "name": "Jonas Andreasson",
-    "email": "jonas@diglias.com",
-    "url": "https://diglias.idfyed.com"
+    "email": "jonas@idfyed.com",
+    "url": "https://idfyed.com"
   },
   "files": [
     "lib"
@@ -26,7 +26,7 @@
     "gulp-exclude-gitignore": "^1.2.0",
     "gulp-istanbul": "^1.1.2",
     "gulp-line-ending-corrector": "^1.0.1",
-    "gulp-mocha": "^4.3.1",
+    "gulp-mocha": "^6.0.0",
     "gulp-plumber": "^1.1.0",
     "sinon": "^7.3.1"
   },
