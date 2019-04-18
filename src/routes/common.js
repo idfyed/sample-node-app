@@ -27,7 +27,7 @@ module.exports.buildEndpointUrl = function(req, endpoint) {
  * Loads configuration data from a JSON file
  */
 
-module.exports.loadIdFyedfConf = function() {
+module.exports.loadIdFyedConf = function() {
 
     var conf = JSON.parse(fs.readFileSync("./src/idfyed-conf.json", 'utf8'));
 
