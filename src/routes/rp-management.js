@@ -29,7 +29,7 @@ var envEndpoints = {
 router.post('/', function (req, res, next) {
 
     // Load relying party cofiguration from file
-    var conf = c.loadDigliasConf();
+    var conf = c.loadIdFyedConf();
 
     // Create a request body according to API specification
     var requestBody = {

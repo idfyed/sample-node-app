@@ -11,7 +11,7 @@
 var dateParse = require('date-parse');
 var express = require('express');
 
-var Diglias = require('diglias-eapi-client');
+var IDFyed = require('idfyed-eapi-client');
 var router = express.Router();
 var _ = require('lodash');
 
@@ -27,7 +27,7 @@ var c = require('./common');
 router.get('/entrypoint', function (req, res, next) {
 
     // Validate that the response has not been tampered with
-    if (!Diglias.veirifyAuthnResponse(req.query, c.loadDigliasConf().login.mac_key)) {
+    if (!IDFyed.veirifyAuthnResponse(req.query, c.loadIdFyedConf().login.mac_key)) {
         res.render('invalid-mac');
         return;
     }

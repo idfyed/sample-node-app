@@ -47,8 +47,8 @@ module.exports = function (grunt) {
         copy: {
             zip: {
                 files: [
-                    { expand: true, src: ['eapi-client/*.tgz'], dest: 'diglias-node-sample-app/' },
-                    { expand: true, src: ['src/**/*'], dest: 'diglias-node-sample-app/' },
+                    { expand: true, src: ['eapi-client/*.tgz'], dest: 'idfyed-node-sample-app/' },
+                    { expand: true, src: ['src/**/*'], dest: 'idfyed-node-sample-app/' },
                     {
                         expand: true,
                         src: [

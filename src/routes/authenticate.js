@@ -11,7 +11,7 @@ var dateFormat = require('dateformat');
 var randomString = require('randomstring');
 var express = require('express');
 
-var Diglias = require('diglias-eapi-client');
+var IDFyed = require('idfyed-eapi-client');
 var router = express.Router();
 var _ = require('lodash');
 
@@ -25,7 +25,7 @@ var c = require('./common');
 router.post('/', function (req, res, next) {
 
     // Load relying party cofiguration from file
-    var conf = c.loadDigliasConf();
+    var conf = c.loadIdFyedConf();
 
     var params = {};
 
@@ -57,7 +57,7 @@ router.post('/', function (req, res, next) {
     req.session.requestId = params.auth_requestid;
 
     // Build the URL and redirect the users browser to it.
-    res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
+    res.redirect(IDFyed.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
 });
 
 /**
@@ -69,7 +69,7 @@ router.post('/', function (req, res, next) {
 router.post('/connect', function (req, res, next) {
 
     // Load relying party cofiguration from file
-    var conf = c.loadDigliasConf();
+    var conf = c.loadIdFyedConf();
 
     var params = {};
 
@@ -97,7 +97,7 @@ router.post('/connect', function (req, res, next) {
     req.session.requestId = params.auth_requestid;
 
     // Build the URL and redirect the users browser to it.
-    res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
+    res.redirect(IDFyed.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
 });
 
 /**
@@ -107,7 +107,7 @@ router.post('/connect', function (req, res, next) {
 router.post('/success', function (req, res, next) {
 
     // Validate that the reponse has not been tampered with
-    if (Diglias.veirifyAuthnResponse(req.body, c.loadDigliasConf().login.mac_key)) {
+    if (IDFyed.veirifyAuthnResponse(req.body, c.loadIdFyedConf().login.mac_key)) {
         // Validate that the response is related to our request
         if (c.validateAuthRequestId(req)) {
             // Render the content of the response

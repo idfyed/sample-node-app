@@ -11,7 +11,7 @@ var dateFormat = require('dateformat');
 var randomString = require('randomstring');
 var express = require('express');
 
-var Diglias = require('diglias-eapi-client');
+var IDFyed = require('idfyed-eapi-client');
 var router = express.Router();
 var _ = require('lodash');
 
@@ -27,7 +27,7 @@ var c = require('./common');
 router.post('/emulate', function (req, res, next) {
 
     // Load relying party cofiguration from file
-    var conf = c.loadDigliasConf();
+    var conf = c.loadIdFyedConf();
 
     var params = {};
 
@@ -46,7 +46,7 @@ router.post('/emulate', function (req, res, next) {
     params.auth_requestid = randomString.generate(16);
 
     // Build the URL and redirect the users browser to it.
-    res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
+    res.redirect(IDFyed.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
 });
 
 /**
@@ -60,7 +60,7 @@ router.post('/transform', function(req, res, next){
     req.body.auth_timestamp = dateFormat(Date(), "isoUtcDateTime");
 
     // Since we add a auth_* parameter , we need to compute a new MAC.
-    req.body.mac = Diglias.computeMac(req.body,c.loadDigliasConf().login.mac_key);
+    req.body.mac = IDFyed.computeMac(req.body,c.loadIdFyedConf().login.mac_key);
 
     // Transform the POST body to a string of parameters suitable for a GET request
     var urlParams = '';

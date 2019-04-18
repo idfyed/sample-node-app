@@ -4,7 +4,7 @@ Gruntfile.js
 README.md
 Dockerfile
 docker-compose.yml
-diglias-node-sample-app.zip
+idfyed-node-sample-app.zip
 .gitignore
 ./eapi-client/src/
 ./eapi-client/test/

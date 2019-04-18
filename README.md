@@ -111,15 +111,15 @@ host.
 
 ### Build the Image using docker
 
-Issue the command `docker build -t diglias-sample-app .` in the root
+Issue the command `docker build -t idfyed-sample-app .` in the root
 directory of the project. This will build an image in your docker host
-named `diglias-sample-app`.
+named `idfyed-sample-app`.
 
 ### Run the Image
 
 The application can be started in the docker host using the command
-`docker run -p 3000 --name=diglias diglias-sample-app`. This will start
-a container named `diglias` and expose the application on port 3000 of
+`docker run -p 3000 --name=idfyed idfyed-sample-app`. This will start
+a container named `idfyed` and expose the application on port 3000 of
 the docker host.
 
 ### Build and Run with Docker Compose
@@ -142,14 +142,14 @@ source that is of interest:
 * `src/routes/*` - This is where the application specific logics
   are implemented as a set of URL handlers that communicate with the
   IDFyed service trough the user's browser.
-* `src/diglias-conf.json` - configuration related to IDFyed.
+* `src/idfyed-conf.json` - configuration related to IDFyed.
 * `eapi-client/` - A separate **npm** package with a module that
   implements some of the API specific logic's, this package can be
   extracted and reused in real world integration implementations.
 
 ### Configuration file
 
-The file `src/diglias-conf.json` contains configuration data related to
+The file `src/idfyed-conf.json` contains configuration data related to
 the integration with the IDFyed Go service, there are three
 main sections of informaton:
 
