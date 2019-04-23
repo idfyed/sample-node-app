@@ -22,14 +22,14 @@ var envEndpoints = {
 };
 
 /**
- * Call the IDFyed service through a backend channel and add a attribute
- * to the IDFyed users profile.
+ * Call the Diglias service through a backend channel and add a attribute
+ * to the Diglias users profile.
  */
 
 router.post('/', function (req, res, next) {
 
     // Load relying party cofiguration from file
-    var conf = c.loadIdFyedConf();
+    var conf = c.loadDigliasConf();
 
     // Create a request body according to API specification
     var requestBody = {

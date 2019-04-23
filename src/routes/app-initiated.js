@@ -1,7 +1,7 @@
 /**
  * Copyright 2019 (C) IDFyed Solutions AB
  *
- * Implements a route for returning a page that will be rendered in a web view in the IDFyed app
+ * Implements a route for returning a page that will be rendered in a web view in the Diglias app
  * when the user has scanned a static QR code.
  *
  * @author jonas
@@ -11,7 +11,7 @@
 var dateParse = require('date-parse');
 var express = require('express');
 
-var IDFyed = require('idfyed-eapi-client');
+var Diglias = require('diglias-eapi-client');
 var router = express.Router();
 var _ = require('lodash');
 
@@ -21,13 +21,13 @@ var c = require('./common');
  *
  * The main entrypoint to the application in the app initiated flow. This URL will be receive
  * a GET request once the user has scanned a static QR code. The reponse will be rendered in a webview
- * in the IDFyed app and the user perception is that the user is still in the context of the App.
+ * in the Diglias app and the user perception is that the user is still in the context of the App.
  */
 
 router.get('/entrypoint', function (req, res, next) {
 
     // Validate that the response has not been tampered with
-    if (!IDFyed.veirifyAuthnResponse(req.query, c.loadIdFyedConf().login.mac_key)) {
+    if (!Diglias.veirifyAuthnResponse(req.query, c.loadDigliasConf().login.mac_key)) {
         res.render('invalid-mac');
         return;
     }

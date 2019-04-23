@@ -13,6 +13,7 @@
   ],
   "main": "lib/index.js",
   "keywords": [
+    "diglias",
     "idfyed",
     "authentication"
   ],

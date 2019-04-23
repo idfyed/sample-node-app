@@ -1,19 +1,19 @@
-# IDFyed Go node.js sample application
+# Diglias Go node.js sample application
 
 A node.js based web application implementing an integration with the
-IDFyed GO service to authenticate users using the IDFyed Me digital
+Diglias GO service to authenticate users using the Diglias Me digital
 ID. Even though this example focuses on using the
-IDFyed Me Digtial ID, implementations that use alternate ID:s such as
+Diglias Me Digital ID, implementations that use alternate ID:s such as
 Bank ID or Telia will be very similar and the authentication example is relevant in
 those cases as well.
 
 ## Disclaimer
 
 This is by no means a fully-fledged web application, it is only a
-example on how to communicate with the IDFyed Go service to
+example on how to communicate with the Diglias Go service to
 authenticate a user and retrieve user attributes. The application does
 not implement authorization at all. In a real world scenario the
-implementer would have to use the information retrieved from the IDFyed
+implementer would have to use the information retrieved from the Diglias
 system to authorize the user in the application context.
 
 ## Compatibility
@@ -36,7 +36,7 @@ installed and available in the path.
 
 Issue the following commands in the project directory:
 
-### Build the sub package `IDFyed EAPI Client`
+### Build the sub package `Diglias EAPI Client`
 
 ```
 $ cd eapi-client
@@ -88,18 +88,18 @@ warning and will have to trust the certificate. The sample includes
 Demonstrates authentication of a user either by requesting a default
 set of attribute or by selecting a subset.
 Once the authentication has been successfully completed, it is possible
-to add a value to the user's IDFyed using the backend RP Management API.
+to add a value to the user's Diglias using the backend RP Management API.
 
 #### Web Flow Connect
 
-This flow shows how to add an attribute to the user's IDFyed profile as
+This flow shows how to add an attribute to the user's Diglias profile as
 part of a normal authentication flow.
 
 #### App Initiated
 
 A sample of how to implement App initiated flow where the user's journey
 starts by scanning a static QR code and ends up authenticated with a
-web page rendered in the user's web browser or web view in the IDFyed
+web page rendered in the user's web browser or web view in the Diglias
 app.
 
 ## Running in Docker
@@ -111,15 +111,15 @@ host.
 
 ### Build the Image using docker
 
-Issue the command `docker build -t idfyed-sample-app .` in the root
+Issue the command `docker build -t diglias-sample-app .` in the root
 directory of the project. This will build an image in your docker host
-named `idfyed-sample-app`.
+named `diglias-sample-app`.
 
 ### Run the Image
 
 The application can be started in the docker host using the command
-`docker run -p 3000 --name=idfyed idfyed-sample-app`. This will start
-a container named `idfyed` and expose the application on port 3000 of
+`docker run -p 3000 --name=diglias diglias-sample-app`. This will start
+a container named `diglias` and expose the application on port 3000 of
 the docker host.
 
 ### Build and Run with Docker Compose
@@ -136,27 +136,27 @@ The application in it self if a fairly straight forward web application
 based on the [Express](http://expressjs.com) web application framework.
 The [Handlebars](http://handlebarsjs.com/) templating system is used to render
 html.
-From a IDFyed integration point of view there are really three parts of the
+From a Diglias integration point of view there are really three parts of the
 source that is of interest:
 
 * `src/routes/*` - This is where the application specific logics
   are implemented as a set of URL handlers that communicate with the
-  IDFyed service through the user's browser.
-* `src/idfyed-conf.json` - configuration related to IDFyed.
+  Diglias service through the user's browser.
+* `src/diglias-conf.json` - configuration related to Diglias.
 * `eapi-client/` - A separate **npm** package with a module that
   implements some of the API specific logic's, this package can be
   extracted and reused in real world integration implementations.
 
 ### Configuration file
 
-The file `src/idfyed-conf.json` contains configuration data related to
-the integration with the IDFyed Go service, there are three
+The file `src/diglias-conf.json` contains configuration data related to
+the integration with the Diglias Go service, there are three
 main sections of informaton:
 
 ## Contact and Feedback
 
-Any questions, or feedback on the code or IDFyed in general?
+Any questions, or feedback on the code or Diglias in general?
 
-playground@idfyed.com
+playground@diglias.com
 
 Copyright (c) 2019 IDFyed Solutions AB

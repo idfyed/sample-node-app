@@ -27,9 +27,9 @@ module.exports.buildEndpointUrl = function(req, endpoint) {
  * Loads configuration data from a JSON file
  */
 
-module.exports.loadIdFyedConf = function() {
+module.exports.loadDigliasConf = function() {
 
-    var conf = JSON.parse(fs.readFileSync("./src/idfyed-conf.json", 'utf8'));
+    var conf = JSON.parse(fs.readFileSync("./src/diglias-conf.json", 'utf8'));
 
     // Default to using the prodTest environment if not specified
     // in the configuration file.

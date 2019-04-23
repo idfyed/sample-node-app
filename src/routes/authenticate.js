@@ -11,21 +11,21 @@ var dateFormat = require('dateformat');
 var randomString = require('randomstring');
 var express = require('express');
 
-var IDFyed = require('idfyed-eapi-client');
+var Diglias = require('diglias-eapi-client');
 var router = express.Router();
 var _ = require('lodash');
 
 var c = require('./common');
 
 /**
- * Prepare a message to the IDFyed server and redirect the users
- * browser to IDFyed to ask the user to authenticate.
+ * Prepare a message to the Diglias server and redirect the users
+ * browser to Diglias to ask the user to authenticate.
  */
 
 router.post('/', function (req, res, next) {
 
     // Load relying party cofiguration from file
-    var conf = c.loadIdFyedConf();
+    var conf = c.loadDigliasConf();
 
     var params = {};
 
@@ -57,19 +57,19 @@ router.post('/', function (req, res, next) {
     req.session.requestId = params.auth_requestid;
 
     // Build the URL and redirect the users browser to it.
-    res.redirect(IDFyed.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
+    res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
 });
 
 /**
- * Prepare a message to the IDFyed server and redirect the users
- * browser to IDFyed to ask the user to have a attribute added to
- * their IDFyed.
+ * Prepare a message to the Diglias server and redirect the users
+ * browser to Diglias to ask the user to have a attribute added to
+ * their Diglias.
  */
 
 router.post('/connect', function (req, res, next) {
 
     // Load relying party cofiguration from file
-    var conf = c.loadIdFyedConf();
+    var conf = c.loadDigliasConf();
 
     var params = {};
 
@@ -97,17 +97,17 @@ router.post('/connect', function (req, res, next) {
     req.session.requestId = params.auth_requestid;
 
     // Build the URL and redirect the users browser to it.
-    res.redirect(IDFyed.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
+    res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
 });
 
 /**
- * The IDFyed server will redirect the users browser to POST to this URL
+ * The Diglias server will redirect the users browser to POST to this URL
  * once the authentication has been successfully completed.
  */
 router.post('/success', function (req, res, next) {
 
     // Validate that the reponse has not been tampered with
-    if (IDFyed.veirifyAuthnResponse(req.body, c.loadIdFyedConf().login.mac_key)) {
+    if (Diglias.veirifyAuthnResponse(req.body, c.loadDigliasConf().login.mac_key)) {
         // Validate that the response is related to our request
         if (c.validateAuthRequestId(req)) {
             // Render the content of the response
@@ -121,7 +121,7 @@ router.post('/success', function (req, res, next) {
 });
 
 /**
- * The IDFyed server will redirect the users browser this URL
+ * The Diglias server will redirect the users browser this URL
  * if the user cancels the authentication.
  */
 
@@ -130,8 +130,8 @@ router.get('/cancel', function (req, res, next) {
 });
 
 /**
- * The IDFyed server will redirect the users browser this URL
- * if the authentication gets rejected by the Diglais server.
+ * The Diglias server will redirect the users browser this URL
+ * if the authentication gets rejected by the Diglias server.
  */
 
 router.get('/reject', function (req, res, next) {

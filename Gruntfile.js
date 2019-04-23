@@ -47,8 +47,8 @@ module.exports = function (grunt) {
         copy: {
             zip: {
                 files: [
-                    { expand: true, src: ['eapi-client/*.tgz'], dest: 'idfyed-node-sample-app/' },
-                    { expand: true, src: ['src/**/*'], dest: 'idfyed-node-sample-app/' },
+                    { expand: true, src: ['eapi-client/*.tgz'], dest: 'diglias-node-sample-app/' },
+                    { expand: true, src: ['src/**/*'], dest: 'diglias-node-sample-app/' },
                     {
                         expand: true,
                         src: [
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
                             'package.json',
                             'README.md'
                         ],
-                        dest: 'idfyed-node-sample-app/'
+                        dest: 'diglias-node-sample-app/'
                     },
 
                 ],
@@ -68,20 +68,20 @@ module.exports = function (grunt) {
         compress: {
             zip: {
                 options: {
-                    archive: 'idfyed-node-sample-app.zip'
+                    archive: 'diglias-node-sample-app.zip'
                 },
                 files: [
-                    { src: ['idfyed--node-sample-app/**'], dest: '/' },
+                    { src: ['diglias-node-sample-app/**'], dest: '/' },
                 ]
             }
         },
 
         clean: {
-            zip: ['idfyed-node-sample-app'],
+            zip: ['diglias-node-sample-app'],
             all: [
                 'node_modules',
                 'eapi-client/node_modules',
-                'idfyed-node-sample-app.zip'
+                'diglias-node-sample-app.zip'
                 ],
         },
 
