@@ -11,13 +11,13 @@ module.exports = {
 
   responseData: {
     /* eslint-disable */
-    auth_authnmethod: 'idfyed',
+    auth_authnmethod: 'diglias',
     auth_inresponseto: 'xxxxxxxxxxxxxxxx',
     mac: '01470A49FD2547D8F432F863F6A55CDB',
     auth_a_mobile: '+46708195377',
     auth_a_personalIdentificationNumber: '19750101-5050',
     auth_userid: 'f731a1e6-ebcc-4ac6-aa5a-f81899885c7e',
-    auth_a_email: 'jonas@idfyed.com,user2@domain.com'
+    auth_a_email: 'jonas@diglias.com,user2@domain.com'
     /* eslint-enable */
   },
 

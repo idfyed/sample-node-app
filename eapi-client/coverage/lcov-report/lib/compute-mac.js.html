@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/15</span>
+        <span class='fraction'>0/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>0/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>15/15</span>
+        <span class='fraction'>0/10</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -81,17 +81,7 @@
 36
 37
 38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+39</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -105,42 +95,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">33×</span>
-<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">27×</span>
-<span class="cline-any cline-yes">27×</span>
-<span class="cline-any cline-yes">29×</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * Copyright 2016 (C) Diglias AB
+ * Copyright 2019 (C) IDFyed Solutions AB
  *
  * @author jonas
  *
@@ -153,39 +133,29 @@
  */
 &nbsp;
 // Used to compute the mac as a HMAC-MD5
-var Hashes = require('jshashes');
+<span class="cstat-no" title="statement not covered" >var Hashes = require('jshashes');</span>
 &nbsp;
-module.exports = function (values, macKey) {
-  // Sort the values in alphabetical order bye name
-  var keys = Object.keys(values).sort();
+<span class="cstat-no" title="statement not covered" >module.exports = <span class="fstat-no" title="function not covered" >function (values, macKey) {</span></span>
+  // Sort the values in alphabetical order by name
+<span class="cstat-no" title="statement not covered" >  var keys = Object.keys(values).sort();</span>
 &nbsp;
   // Concatenate all valid parameters to one string
-  var macData = '';
+<span class="cstat-no" title="statement not covered" >  var macData = '';</span>
 &nbsp;
-  keys.forEach(function (key) {
+<span class="cstat-no" title="statement not covered" >  keys.forEach(<span class="fstat-no" title="function not covered" >function (key) {</span></span>
     // Only values prefixed with "auth_" should be hashed
     // noinspection JSCheckFunctionSignatures
-    if (key.match('auth_.*')) {
-      if (macData.length &gt; 0) {
+<span class="cstat-no" title="statement not covered" >    if (key.match('auth_.*')) {</span>
+<span class="cstat-no" title="statement not covered" >      if (macData.length &gt; 0) {</span>
         // Separate parameters with "&amp;"
-        macData = macData.concat('&amp;');
+<span class="cstat-no" title="statement not covered" >        macData = macData.concat('&amp;');</span>
       }
-&nbsp;
-      // Sort the values of a parameter alphabetically
-      var value = '';
-      values[key].split(',').sort().forEach(function (val) {
-        if (value.length &gt; 0) {
-          value = value.concat(',');
-        }
-        value = value.concat(val);
-      });
-&nbsp;
-      macData = macData.concat(key.concat('=').concat(value));
+<span class="cstat-no" title="statement not covered" >      macData = macData.concat(key.concat('=').concat(values[key]));</span>
     }
   });
 &nbsp;
   // Compute mac based on the values
-  return new Hashes.MD5().hex_hmac(macKey, macData).toUpperCase();
+<span class="cstat-no" title="statement not covered" >  return new Hashes.MD5().hex_hmac(macKey, macData).toUpperCase();</span>
 };
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -193,7 +163,7 @@ module.exports = function (values, macKey) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 19 2016 11:38:41 GMT+0100 (CET)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 23 2019 21:15:11 GMT+0800 (Philippine Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

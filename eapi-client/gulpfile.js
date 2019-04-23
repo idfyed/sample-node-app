@@ -1,6 +1,4 @@
 'use strict';
-var path = require('path');
-var del = require('del');
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var excludeGitignore = require('gulp-exclude-gitignore');
@@ -16,7 +14,6 @@ gulp.task('static', function () {
     .pipe(eslint.failAfterError());
 });
 
-
 gulp.task('pre-test', function () {
   return gulp.src('lib/**/*.js')
     .pipe(excludeGitignore())
@@ -26,10 +23,10 @@ gulp.task('pre-test', function () {
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('test', ['pre-test'], function (cb) {
+gulp.task('test', gulp.series('pre-test', function (cb) {
   var mochaErr;
 
-  gulp.src('test/**/*.js')
+  return gulp.src('test/**/*.js')
     .pipe(plumber())
     .pipe(mocha({reporter: 'spec'}))
     .on('error', function (err) {
@@ -39,17 +36,11 @@ gulp.task('test', ['pre-test'], function (cb) {
     .on('end', function () {
       cb(mochaErr);
     });
-});
+}));
 
 gulp.task('watch', function () {
-  gulp.watch(['lib/**/*.js', 'test/**'], ['test']);
+  gulp.watch('test/**', gulp.series('test'));
+  gulp.watch('lib/**/*.js');
 });
 
-gulp.task('clean', function () {
-  return del([
-    'node_modules',
-    'coverage'
-  ]);
-});
-
-gulp.task('default', ['static', 'test']);
+gulp.task('default', gulp.parallel('static', 'test', 'watch'));
