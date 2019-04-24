@@ -22,7 +22,7 @@ Since the application is pure javascript it should be possible to run on
 any platform where node.js exists. It has been developed and tested on
 Mac OSX. If you need to regenerate the server certificates used for SSL/TLS,
 the script supplied is depending on bash and openssl, in that case a
-un*x flavor of some sort is probably the most natural choice.
+un\*x flavor of some sort is probably the most natural choice.
 
 ## Dependencies
 
@@ -139,19 +139,18 @@ html.
 From a Diglias integration point of view there are really three parts of the
 source that is of interest:
 
-* `src/routes/*` - This is where the application specific logics
+- `src/routes/*` - This is where the application specific logics
   are implemented as a set of URL handlers that communicate with the
   Diglias service through the user's browser.
-* `src/diglias-conf.json` - configuration related to Diglias.
-* `eapi-client/` - A separate **npm** package with a module that
+- `src/diglias-conf.json` - configuration related to Diglias.
+- `eapi-client/` - A separate **npm** package with a module that
   implements some of the API specific logic's, this package can be
   extracted and reused in real world integration implementations.
 
 ### Configuration file
 
 The file `src/diglias-conf.json` contains configuration data related to
-the integration with the Diglias Go service, there are three
-main sections of informaton:
+the integration with the Diglias Go service.
 
 ## Contact and Feedback
 
