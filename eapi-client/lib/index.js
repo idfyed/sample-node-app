@@ -1,12 +1,12 @@
 /**
- * Copyright 2017 (C) Diglias AB
+ * Copyright 2019 (C) IDFyed Solutions AB
  *
  * @author jonas
  *
  * Helper functions to support implementation of the client side of the EAPI
  * authentication protocol.
  *
- * Please read more at: https://test.diglias.com/doc-rp/eapi.jsp
+ * Please read more at: https://test.idfyed.com/doc-rp/eapi.jsp
  *
  */
 'use strict';
@@ -62,10 +62,10 @@ module.exports = {
     });
 
     var envEndpoints = {
-      build: 'https://build.diglias.com/main-eapi/begin',
-      prod: 'https://login.diglias.com/main-eapi/begin',
-      prodTest: 'https://prodtest-login.diglias.com/main-eapi/begin',
-      test: 'https://test.diglias.com/main-eapi/begin'
+      build: 'https://build.idfyed.com/main-eapi/begin',
+      prod: 'https://login.idfyed.com/main-eapi/begin',
+      prodTest: 'https://prodtest-login.idfyed.com/main-eapi/begin',
+      test: 'https://test.idfyed.com/main-eapi/begin'
     };
 
     //
@@ -94,4 +94,3 @@ module.exports = {
   computeMac: computeMac
 
 };
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2017 (C) Diglias AB
+ * Copyright 2019 (C) IDFyed Solutions AB
  *
  * @author jonas
  *
@@ -36,7 +36,7 @@ module.exports = {
 
   requestMAC: 'D715C8DD03AB5118ECAD9F83C995FE6E',
 
-  prodRequestURL: 'https://login.diglias.com/main-eapi/begin?auth_companyname=playground&auth_returnlink=https%3A%2F%2Flocalhost%3A3000%2Fauthenticate%2Fsuccess&auth_cancellink=https%3A%2F%2Flocalhost%3A3000%2Fauthenticate%2Fcancel&auth_rejectlink=https%3A%2F%2Flocalhost%3A3000%2Fauthenticate%2Freject&auth_requestid=xxxxxxxxxxxxxxxx&auth_timestamp=2017-01-01T18%3A00%3A00%2B00%3A00&mac=D715C8DD03AB5118ECAD9F83C995FE6E',
+  prodRequestURL: 'https://login.idfyed.com/main-eapi/begin?auth_companyname=playground&auth_returnlink=https%3A%2F%2Flocalhost%3A3000%2Fauthenticate%2Fsuccess&auth_cancellink=https%3A%2F%2Flocalhost%3A3000%2Fauthenticate%2Fcancel&auth_rejectlink=https%3A%2F%2Flocalhost%3A3000%2Fauthenticate%2Freject&auth_requestid=xxxxxxxxxxxxxxxx&auth_timestamp=2017-01-01T18%3A00%3A00%2B00%3A00&mac=D715C8DD03AB5118ECAD9F83C995FE6E',
 
   invalidRequestData: {
     /* eslint-disable */

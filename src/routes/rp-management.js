@@ -1,7 +1,7 @@
 /**
- * Copyright 2017 (C) Diglias AB
+ * Copyright 2019 (C) IDFyed Solutions AB
  *
- * Routes for backend connect trough the RP Management API.
+ * Routes for backend connect through the RP Management API.
  *
  * @author jonas
  *
@@ -17,12 +17,12 @@ var c = require('./common');
  * Base URLs for api endpoints
  */
 var envEndpoints = {
-    prod: 'https://api.diglias.com/rp-mgmt/attribute/v1.0/',
-    test: 'https://test.diglias.com/rp-mgmt/attribute/v1.0/'
+    prod: 'https://api.idfyed.com/rp-mgmt/attribute/v1.0/',
+    test: 'https://test.idfyed.com/rp-mgmt/attribute/v1.0/'
 };
 
 /**
- * Call the Diglias service trough a backend channel and add a attribute
+ * Call the Diglias service through a backend channel and add a attribute
  * to the Diglias users profile.
  */
 

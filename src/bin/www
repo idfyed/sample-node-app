@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Copyright 2017 (C) Diglias AB
+ * Copyright 2019 (C) IDFyed Solutions AB
  *
  * @author jonas
  *
@@ -54,7 +54,7 @@ var server = https.createServer(options, app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-console.log("Server listeing on port", port);
+console.log("Server listening on port", port);
 
 /**
  * Normalize a port into a number, string, or false.

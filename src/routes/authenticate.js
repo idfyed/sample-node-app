@@ -1,5 +1,5 @@
 /**
- * Copyright 2017 (C) Diglias AB
+ * Copyright 2019 (C) IDFyed Solutions AB
  *
  * Routes for the normal authentication flow and web flow connect
  *
@@ -131,7 +131,7 @@ router.get('/cancel', function (req, res, next) {
 
 /**
  * The Diglias server will redirect the users browser this URL
- * if the authentication gets rejected by the Diglais server.
+ * if the authentication gets rejected by the Diglias server.
  */
 
 router.get('/reject', function (req, res, next) {

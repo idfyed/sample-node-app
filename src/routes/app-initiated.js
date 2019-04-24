@@ -1,5 +1,5 @@
 /**
- * Copyright 2017 (C) Diglias AB
+ * Copyright 2019 (C) IDFyed Solutions AB
  *
  * Implements a route for returning a page that will be rendered in a web view in the Diglias app
  * when the user has scanned a static QR code.

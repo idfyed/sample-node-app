@@ -2,11 +2,11 @@
   "name": "diglias-eapi-client",
   "version": "0.1.0",
   "description": "Module to aid in the implementation of Diglias EAPI integrations.",
-  "homepage": "https://diglias.com",
+  "homepage": "https://idfyed.com",
   "author": {
     "name": "Jonas Andreasson",
-    "email": "jonas@diglias.com",
-    "url": "https://diglias.com"
+    "email": "jonas@idfyed.com",
+    "url": "https://idfyed.com"
   },
   "files": [
     "lib"
@@ -14,6 +14,7 @@
   "main": "lib/index.js",
   "keywords": [
     "diglias",
+    "idfyed",
     "authentication"
   ],
   "devDependencies": {
@@ -21,15 +22,14 @@
     "del": "^3.0.0",
     "eslint": "^4.6.1",
     "eslint-config-xo-space": "^0.16.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-eslint": "^4.0.0",
     "gulp-exclude-gitignore": "^1.2.0",
     "gulp-istanbul": "^1.1.2",
     "gulp-line-ending-corrector": "^1.0.1",
-    "gulp-mocha": "^4.3.1",
-    "gulp-nsp": "^2.4.2",
+    "gulp-mocha": "^6.0.0",
     "gulp-plumber": "^1.1.0",
-    "sinon": "^3.2.1"
+    "sinon": "^7.3.1"
   },
   "eslintConfig": {
     "extends": "xo-space",
@@ -38,7 +38,6 @@
     }
   },
   "scripts": {
-    "prepublish": "gulp prepublish",
     "test": "gulp",
     "clean": "gulp clean"
   },

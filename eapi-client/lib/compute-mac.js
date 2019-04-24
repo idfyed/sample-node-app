@@ -1,5 +1,5 @@
 /**
- * Copyright 2017 (C) Diglias AB
+ * Copyright 2019 (C) IDFyed Solutions AB
  *
  * @author jonas
  *
@@ -15,7 +15,7 @@
 var Hashes = require('jshashes');
 
 module.exports = function (values, macKey) {
-  // Sort the values in alphabetical order bye name
+  // Sort the values in alphabetical order by name
   var keys = Object.keys(values).sort();
 
   // Concatenate all valid parameters to one string

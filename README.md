@@ -3,7 +3,7 @@
 A node.js based web application implementing an integration with the
 Diglias GO service to authenticate users using the Diglias Me digital
 ID. Even though this example focuses on using the
-Diglias Me Digtial ID, implementations that use alternate ID:s such as
+Diglias Me Digital ID, implementations that use alternate ID:s such as
 Bank ID or Telia will be very similar and the authentication example is relevant in
 those cases as well.
 
@@ -22,7 +22,7 @@ Since the application is pure javascript it should be possible to run on
 any platform where node.js exists. It has been developed and tested on
 Mac OSX. If you need to regenerate the server certificates used for SSL/TLS,
 the script supplied is depending on bash and openssl, in that case a
-un*x flavor of some sort is probably the most natural choice.
+un\*x flavor of some sort is probably the most natural choice.
 
 ## Dependencies
 
@@ -71,7 +71,7 @@ hostname the certificates can be regenerated.
 In the root of the project issue the command `npm start`. This will
 start node.js running a web server on port 3000 by default. The port
 number and some other runtime attributes can be managed through
-environment variabels. Look at the code in `src/bin/www`.
+environment variables. Look at the code in `src/bin/www`.
 
 For security reasons the relying party configuration used in the code
 will only accept requests originating from `http(s)://localhost*`.
@@ -139,19 +139,18 @@ html.
 From a Diglias integration point of view there are really three parts of the
 source that is of interest:
 
-* `src/routes/*` - This is where the application specific logics
+- `src/routes/*` - This is where the application specific logics
   are implemented as a set of URL handlers that communicate with the
-  Diglias service trough the user's browser.
-* `src/diglias-conf.json` - configuration related to Diglias.
-* `eapi-client/` - A separate **npm** package with a module that
+  Diglias service through the user's browser.
+- `src/diglias-conf.json` - configuration related to Diglias.
+- `eapi-client/` - A separate **npm** package with a module that
   implements some of the API specific logic's, this package can be
   extracted and reused in real world integration implementations.
 
 ### Configuration file
 
 The file `src/diglias-conf.json` contains configuration data related to
-the integration with the Diglias Go service, there are three
-main sections of informaton:
+the integration with the Diglias Go service.
 
 ## Contact and Feedback
 
@@ -159,4 +158,4 @@ Any questions, or feedback on the code or Diglias in general?
 
 playground@diglias.com
 
-Copyright (c) 2018 Diglias AB
+Copyright (c) 2019 IDFyed Solutions AB

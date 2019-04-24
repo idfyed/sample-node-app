@@ -1,11 +1,11 @@
 #
-# Copyright 2017 (C) Diglias AB
+# Copyright 2019 (C) IDFyed Solutions AB
 #
 # @author jonas
-# 
+#
 #
 FROM crusaider/baseimage-node:0.1.0
-MAINTAINER Jonas jonas@diglias.com
+MAINTAINER Jonas jonas@idfyed.com
 
 # Install app dependencies
 COPY eapi-client /app/eapi-client/.

@@ -16,7 +16,7 @@ eapiClient('Rainbow');
 ```
 ## License
 
- © [Diglias AB](https://diglias.com)
+ © [IDFyed AB](https://idfyed.com)
 
 
 [npm-image]: https://badge.fury.io/js/eapi-client.svg
