@@ -156,6 +156,6 @@ the integration with the Diglias Go service.
 
 Any questions, or feedback on the code or Diglias in general?
 
-playground@diglias.com
+playground@idfyed.com
 
 Copyright (c) 2019 IDFyed Solutions AB
