@@ -1,21 +1,21 @@
 {{!
-Copyright 2019 (C) IDFyed Solutions AB
+Copyright 2019 (C) Idfyed Solutions AB
 @author jonas
 }}
 {{> header}}
 {{> nav}}
 <h1>Success</h1>
-<p>Authentication successful, the user will receive this response in a web view in the Diglias app.</p>
+<p>Authentication successful, the user will receive this response in a web view in the Idfyed app.</p>
 <table>
     <tr>
         <th>Parameter</th>
         <th>Value</th>
     </tr>
     {{#each body}}
-        <tr>
-            <td>{{@key}}</td>
-            <td>{{this}}</td>
-        </tr>
+    <tr>
+        <td>{{@key}}</td>
+        <td>{{this}}</td>
+    </tr>
     {{/each}}
 </table>
 {{> footer}}

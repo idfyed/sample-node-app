@@ -1,7 +1,7 @@
 {
-  "name": "diglias-eapi-client",
+  "name": "idfyed-eapi-client",
   "version": "0.1.0",
-  "description": "Module to aid in the implementation of Diglias EAPI integrations.",
+  "description": "Module to aid in the implementation of Idfyed EAPI integrations.",
   "homepage": "https://idfyed.com",
   "author": {
     "name": "Jonas Andreasson",
@@ -13,7 +13,6 @@
   ],
   "main": "lib/index.js",
   "keywords": [
-    "diglias",
     "idfyed",
     "authentication"
   ],

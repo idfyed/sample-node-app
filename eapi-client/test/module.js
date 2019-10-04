@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 (C) IDFyed Solutions AB
+ * Copyright 2019 (C) Idfyed Solutions AB
  *
  * @author jonas
  *
@@ -14,9 +14,9 @@ var EAPI = require('../lib');
 var testData = require('./test-data');
 
 describe('module-interface', function () {
-  describe('#veirifyAuthnResponse', function () {
+  describe('#verifyAuthnResponse', function () {
     it('should should verify a valid response', function () {
-      assert.isTrue(EAPI.veirifyAuthnResponse(testData.responseData, testData.key));
+      assert.isTrue(EAPI.verifyAuthnResponse(testData.responseData, testData.key));
     });
   });
 

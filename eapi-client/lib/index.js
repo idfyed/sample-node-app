@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 (C) IDFyed Solutions AB
+ * Copyright 2019 (C) Idfyed Solutions AB
  *
  * @author jonas
  *
@@ -20,10 +20,10 @@ module.exports = {
    * to to initiate a authentication transaction.
    *
    * Parameters:
-   *  endpoint: What Diglias environment to call, can be one of:
+   *  endpoint: What Idfyed environment to call, can be one of:
    *      "prod" - for the live production system.
    *      "test" -  for testing purposes during integration
-   *      "prodTest" - for evaluation purposes in conduction with the prod test diglias app
+   *      "prodTest" - for evaluation purposes in conduction with the prod test Idfyed app
    *  macKey: The key te be used to compute the mac
    *  parameters: A object containing all parameter values and the key to be used when
    *      computing the mac. The parameters should be stored as properties named according
@@ -80,11 +80,11 @@ module.exports = {
   },
 
   /**
-   * Validates the response from the Diglias server by computing a mac and
+   * Validates the response from the Idfyed server by computing a mac and
    * comparing it with the enclosed one.
    */
 
-  veirifyAuthnResponse: function (responseBody, macKey) {
+  verifyAuthnResponse: function (responseBody, macKey) {
     return computeMac(responseBody, macKey) === responseBody.mac;
   },
 

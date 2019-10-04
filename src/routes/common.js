@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 (C) IDFyed Solutions AB
+ * Copyright 2019 (C) Idfyed Solutions AB
  *
  * Common functions used in the different flows.
  *
@@ -14,7 +14,7 @@ var fs = require('fs');
  * adds the supplied URL to it.
  */
 
-module.exports.buildEndpointUrl = function(req, endpoint) {
+module.exports.buildEndpointUrl = function (req, endpoint) {
     var prot = "http";
     if (req.connection.encrypted) {
         prot = "https";
@@ -27,9 +27,9 @@ module.exports.buildEndpointUrl = function(req, endpoint) {
  * Loads configuration data from a JSON file
  */
 
-module.exports.loadDigliasConf = function() {
+module.exports.loadIdfyedConf = function () {
 
-    var conf = JSON.parse(fs.readFileSync("./src/diglias-conf.json", 'utf8'));
+    var conf = JSON.parse(fs.readFileSync("./src/idfyed-conf.json", 'utf8'));
 
     // Default to using the prodTest environment if not specified
     // in the configuration file.
@@ -45,6 +45,6 @@ module.exports.loadDigliasConf = function() {
  * as the one stored in the session.
  */
 
-module.exports.validateAuthRequestId = function(req) {
+module.exports.validateAuthRequestId = function (req) {
     return req.session.requestId === req.body.auth_inresponseto;
 };

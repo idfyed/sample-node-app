@@ -1,0 +1,12 @@
+{
+  "endPoint": "prod",
+  "login": {
+    "auth_companyname": "playground",
+    "mac_key": "LW4eUhQkJfwJGgQU8JCT/g=="
+  },
+  "rpManagement": {
+    "companyname": "playground",
+    "user": "playground",
+    "secret": "LW4eUhQkJfwJGgQU8JCT/g=="
+  }
+}
