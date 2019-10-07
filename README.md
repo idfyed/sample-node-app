@@ -1,7 +1,7 @@
 # Idfyed Service node.js sample application
 
 A node.js based web application implementing an integration with the
-Idfyed service to authenticate users using the Idfyed Me digital
+Idfyed service to authenticate users using the Idfyed digital
 ID. Even though this example focuses on using the
 Idfyed Digital ID, implementations that use alternate ID:s such as
 Bank ID or Telia will be very similar and the authentication example is relevant in
