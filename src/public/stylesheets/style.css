@@ -1,8 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin%7CRoboto&display=swap");
+
 body {
+  font-family: "Roboto", sans-serif;
   padding: 20px;
-  font: 15px "Effra", Helvetica, Arial, sans-serif;
+  font-size: 15px;
   margin: 0 auto;
   max-width: 600px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Cabin", sans-serif;
 }
 
 a {
