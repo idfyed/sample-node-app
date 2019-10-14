@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 (C) IDFyed Solutions AB
+ * Copyright 2019 (C) Idfyed Solutions AB
  *
  * Routes for backend connect through the RP Management API.
  *
@@ -22,14 +22,14 @@ var envEndpoints = {
 };
 
 /**
- * Call the Diglias service through a backend channel and add a attribute
- * to the Diglias users profile.
+ * Call the Idfyed service through a backend channel and add a attribute
+ * to the Idfyed users profile.
  */
 
 router.post('/', function (req, res, next) {
 
     // Load relying party cofiguration from file
-    var conf = c.loadDigliasConf();
+    var conf = c.loadIdfyedConf();
 
     // Create a request body according to API specification
     var requestBody = {
@@ -72,18 +72,18 @@ router.post('/', function (req, res, next) {
     endpoint = endpoint.concat('/').concat(req.body.userid);
 
     request.post(endpoint, options, function (err, result) {
-            if (err) {
-                throw (err);
-            }
-
-            // The expected returned status code is 204 - without a body,
-            // anything else is a error.
-            if (result.statusCode != 204) {
-                res.render('rp-management-error', result);
-            } else {
-                res.render('rp-management-success', {value: req.body.value});
-            }
+        if (err) {
+            throw (err);
         }
+
+        // The expected returned status code is 204 - without a body,
+        // anything else is a error.
+        if (result.statusCode != 204) {
+            res.render('rp-management-error', result);
+        } else {
+            res.render('rp-management-success', { value: req.body.value });
+        }
+    }
     );
 });
 

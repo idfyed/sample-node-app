@@ -1,35 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin%7CRoboto&display=swap");
+
 body {
-    padding: 20px;
-    font: 15px "Effra", Helvetica, Arial, sans-serif;
-    margin: 0 auto;
-    max-width: 600px;
+  font-family: "Roboto", sans-serif;
+  padding: 20px;
+  font-size: 15px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Cabin", sans-serif;
 }
 
 a {
-    color: #00B7FF;
+  color: #00b7ff;
 }
 
 .dButton {
-    background-color: #56ad71;
-    color: white;
+  background-color: #ffc800;
+  color: #2e2e29;
 
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
-    border-radius:5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 
-    border-width: 1px;
+  border-width: 1px;
 
-    display:inline-block;
+  display: inline-block;
 
-    cursor:pointer;
+  cursor: pointer;
 
-    font-size:14px;
-    font-weight:550;
-    padding:7px 10px;
-    text-decoration: none;
+  font-size: 14px;
+  font-weight: 550;
+  padding: 7px 10px;
+  text-decoration: none;
 }
 
 .dButton:active {
-    background-color: #006a4b;
+  background-color: #ffc800;
 }
-

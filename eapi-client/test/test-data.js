@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 (C) IDFyed Solutions AB
+ * Copyright 2019 (C) Idfyed Solutions AB
  *
  * @author jonas
  *
@@ -11,17 +11,17 @@ module.exports = {
 
   responseData: {
     /* eslint-disable */
-    auth_authnmethod: 'diglias',
+    auth_authnmethod: 'idfyed',
     auth_inresponseto: 'xxxxxxxxxxxxxxxx',
-    mac: '01470A49FD2547D8F432F863F6A55CDB',
+    mac: '36B6F95E8F901F60DBB4E05CADA737A6',
     auth_a_mobile: '+46708195377',
     auth_a_personalIdentificationNumber: '19750101-5050',
     auth_userid: 'f731a1e6-ebcc-4ac6-aa5a-f81899885c7e',
-    auth_a_email: 'jonas@diglias.com,user2@domain.com'
+    auth_a_email: 'jonas@idfyed.com,user2@domain.com'
     /* eslint-enable */
   },
 
-  responseMAC: '01470A49FD2547D8F432F863F6A55CDB',
+  responseMAC: '36B6F95E8F901F60DBB4E05CADA737A6',
 
   requestData: {
     /* eslint-disable */

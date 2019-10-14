@@ -1,11 +1,11 @@
 {{!
-Copyright 2019 (C) IDFyed Solutions AB
+Copyright 2019 (C) Idfyed Solutions AB
 @author jonas
 }}
 {{> header}}
-<h1>Diglias GO Sample Application</h1>
+<h1>Idfyed Sample Application</h1>
 <h2>Authenticate</h2>
-<p>When authenticating users a set of attributes will be requested from the user through the Diglias app. By default
+<p>When authenticating users a set of attributes will be requested from the user through the Idfyed app. By default
     the set of attributes requested is defined in the configuration. Using EAPI it is possible to limit the requested
     attributes to a subset of the configured attributes.</p>
 <form method="post" action="/authenticate/">
@@ -13,7 +13,7 @@ Copyright 2019 (C) IDFyed Solutions AB
     <p><input type="checkbox" name="nickname"><label>Nickname ( <code>nickname</code> )</label></p>
     <p><input type="checkbox" name="c"><label>Country ( <code>c</code> )</label></p>
     <p><input type="checkbox" name="acme_loyaltyNumber"><label>Acme Loyalty Number (
-        <code>acme_loyaltyNumber</code> )</label></p>
+            <code>acme_loyaltyNumber</code> )</label></p>
     <p><em>If none checked, default configuration will be used.</em></p>
     <input type="submit" value="Authenticate" class="dButton">
 </form>

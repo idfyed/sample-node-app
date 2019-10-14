@@ -1,27 +1,28 @@
 {{!
-Copyright 2019 (C) IDFyed Solutions AB
+Copyright 2019 (C) Idfyed Solutions AB
 @author jonas
 }}
 {{> header}}
 {{> nav}}
 <h1>Success</h1>
-<p>Authentication sucessful, the following data was received from the Diglias GO service.</p>
+<p>Authentication sucessful, the following data was received from the Idfyed service.</p>
 <table>
     <tr>
         <th>Parameter</th>
         <th>Value</th>
     </tr>
     {{#each body}}
-        <tr>
-            <td>{{@key}}</td>
-            <td>{{this}}</td>
-        </tr>
+    <tr>
+        <td>{{@key}}</td>
+        <td>{{this}}</td>
+    </tr>
     {{/each}}
 </table>
 <h2>Back End Connect</h2>
-<p>The diglias user id of the user is now known and it is possible to add data to the Diglias profile of the user through the RP Management API.</p>
+<p>The Idfyed user id of the user is now known and it is possible to add data to the Idfyed profile of the user
+    through the RP Management API.</p>
 <form method="post" action="/rp-management/">
-<input type="hidden" name="userid" value="{{body.auth_userid}}">
-<p><label>acme_loyaltyNumber: </label><input type="text" name="value"></p>
-<p><input type="submit" value="Add to profile" class="dButton"></p>
-{{> footer}}
+    <input type="hidden" name="userid" value="{{body.auth_userid}}">
+    <p><label>acme_loyaltyNumber: </label><input type="text" name="value"></p>
+    <p><input type="submit" value="Add to profile" class="dButton"></p>
+    {{> footer}}

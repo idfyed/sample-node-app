@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 (C) IDFyed Solutions AB
+ * Copyright 2019 (C) Idfyed Solutions AB
  *
  * Routes for the normal authentication flow and web flow connect
  *
@@ -11,21 +11,21 @@ var dateFormat = require('dateformat');
 var randomString = require('randomstring');
 var express = require('express');
 
-var Diglias = require('diglias-eapi-client');
+var Idfyed = require('idfyed-eapi-client');
 var router = express.Router();
 var _ = require('lodash');
 
 var c = require('./common');
 
 /**
- * Prepare a message to the Diglias server and redirect the users
- * browser to Diglias to ask the user to authenticate.
+ * Prepare a message to the Idfyed server and redirect the users
+ * browser to Idfyed to ask the user to authenticate.
  */
 
 router.post('/', function (req, res, next) {
 
     // Load relying party cofiguration from file
-    var conf = c.loadDigliasConf();
+    var conf = c.loadIdfyedConf();
 
     var params = {};
 
@@ -33,13 +33,13 @@ router.post('/', function (req, res, next) {
 
     // Determine if the default set of attributes should be used or if a subset
     // has been chosen.
-    if ( Object.keys(req.body).length > 0 ) {
+    if (Object.keys(req.body).length > 0) {
 
         // To use a sub set of the attributes, supply the names as a comma separated
         // list on the parameter auth_attributes.
         params.auth_attributes = "";
-        for ( var attr in req.body) {
-            if (params.auth_attributes.length > 0 ){
+        for (var attr in req.body) {
+            if (params.auth_attributes.length > 0) {
                 params.auth_attributes = params.auth_attributes.concat(',');
             }
             params.auth_attributes = params.auth_attributes.concat(attr);
@@ -57,19 +57,19 @@ router.post('/', function (req, res, next) {
     req.session.requestId = params.auth_requestid;
 
     // Build the URL and redirect the users browser to it.
-    res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
+    res.redirect(Idfyed.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
 });
 
 /**
- * Prepare a message to the Diglias server and redirect the users
- * browser to Diglias to ask the user to have a attribute added to
- * their Diglias.
+ * Prepare a message to the Idfyed server and redirect the users
+ * browser to Idfyed to ask the user to have a attribute added to
+ * their Idfyed.
  */
 
 router.post('/connect', function (req, res, next) {
 
     // Load relying party cofiguration from file
-    var conf = c.loadDigliasConf();
+    var conf = c.loadIdfyedConf();
 
     var params = {};
 
@@ -97,21 +97,21 @@ router.post('/connect', function (req, res, next) {
     req.session.requestId = params.auth_requestid;
 
     // Build the URL and redirect the users browser to it.
-    res.redirect(Diglias.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
+    res.redirect(Idfyed.buildAuthnRequestUrl(conf.endPoint, conf.login.mac_key, params));
 });
 
 /**
- * The Diglias server will redirect the users browser to POST to this URL
+ * The Idfyed server will redirect the users browser to POST to this URL
  * once the authentication has been successfully completed.
  */
 router.post('/success', function (req, res, next) {
 
     // Validate that the reponse has not been tampered with
-    if (Diglias.veirifyAuthnResponse(req.body, c.loadDigliasConf().login.mac_key)) {
+    if (Idfyed.verifyAuthnResponse(req.body, c.loadIdfyedConf().login.mac_key)) {
         // Validate that the response is related to our request
         if (c.validateAuthRequestId(req)) {
             // Render the content of the response
-            res.render('success', {body: _.clone(req.body)});
+            res.render('success', { body: _.clone(req.body) });
         } else {
             res.render('invalid-request');
         }
@@ -121,7 +121,7 @@ router.post('/success', function (req, res, next) {
 });
 
 /**
- * The Diglias server will redirect the users browser this URL
+ * The Idfyed server will redirect the users browser this URL
  * if the user cancels the authentication.
  */
 
@@ -130,8 +130,8 @@ router.get('/cancel', function (req, res, next) {
 });
 
 /**
- * The Diglias server will redirect the users browser this URL
- * if the authentication gets rejected by the Diglias server.
+ * The Idfyed server will redirect the users browser this URL
+ * if the authentication gets rejected by the Idfyed server.
  */
 
 router.get('/reject', function (req, res, next) {

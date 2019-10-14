@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 (C) IDFyed Solutions AB
+ * Copyright 2019 (C) Idfyed Solutions AB
  *
  * @author jonas
  *
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // The default config will use a in memory store, this is
 // probably not a god idea in a real world production scenario.
 app.use(session({
-    secret: 'diglias-rules',
+    secret: 'idfyed-rules',
     resave: false,
     saveUninitialized: true
 }));
@@ -33,8 +33,8 @@ app.use(session({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 var hbs = require('hbs');
-hbs.registerPartials(__dirname + '/views/partials' , function(err){
-    if ( err ) {
+hbs.registerPartials(__dirname + '/views/partials', function (err) {
+    if (err) {
         logger.error('Failed to set upp view partials directory');
     }
 });
@@ -42,7 +42,7 @@ hbs.registerPartials(__dirname + '/views/partials' , function(err){
 app.use('/', routes);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -53,7 +53,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -64,7 +64,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
